@@ -1,21 +1,31 @@
 import { useState } from "react";
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+// import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+// import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+// import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
+import PaymentIcon from '@mui/icons-material/Payment';
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
+import ReviewsIcon from '@mui/icons-material/Reviews';
+import PasswordIcon from '@mui/icons-material/Password';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PersonIcon from '@mui/icons-material/Person';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -79,8 +89,10 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
+                <Typography variant="h3" color={colors.grey[100]} style={{
+                  fontWeight: "700"
+                }}>
+                  MEDICAREBOT
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -107,49 +119,146 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  John Doe
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+                <Typography variant="h5" color={colors.greenAccent[300]}>
+                  johndeo_232
+                </Typography>
+                <Typography variant="h6" color={colors.blueAccent[300]}>
+                  online
                 </Typography>
               </Box>
             </Box>
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+            {/* <Item
+              title="Medicare Admin"
+              to="/"
+              icon={<HomeOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            /> */}
+
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "12px 0 5px 20px" }}
+            >
+              Admin Dashboard
+            </Typography>
             <Item
-              title="Dashboard"
+              title="Dashboard Overview"
               to="/"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 5px 20px" }}
+            <SubMenu
+              title="Client Management"
+              icon={<ManageAccountsIcon />}
+              active={selected === "support"}
+              style={{
+                color: colors.grey[100]
+              }}
             >
-              Data
-            </Typography>
+              <MenuItem
+                icon={<PersonIcon />}
+                sx={{
+                  "&:hover": {
+                    color: "#868dfb !important",
+                  },
+                  "&.active": {
+                    color: "#6870fa !important",
+                  },
+                }}
+                onClick={() => setSelected("Client Profile")}
+                
+              style={{
+                marginLeft: '-6px',
+                fontSize: '14px'
+              }}
+              >
+                <Link to="/faq" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  Client Profile
+                </Link>
+              </MenuItem>
+
+              <MenuItem
+                icon={<SmartToyIcon />}
+                sx={{
+                  "&:hover": {
+                    color: "#868dfb !important",
+                  },
+                  "&.active": {
+                    color: "#6870fa !important",
+                  }
+                }}
+                onClick={() => setSelected("Assign Bot")}
+                style={{
+                marginLeft: '-6px',
+                fontSize: '14px'
+              }}
+              >
+                <Link to="/form" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  Assign Bot
+                </Link>
+              </MenuItem>
+              <MenuItem
+                icon={<AccountBalanceIcon />}
+                sx={{
+                  "&:hover": {
+                    color: "#868dfb !important",
+                  },
+                  "&.active": {
+                    color: "#6870fa !important",
+                  }
+                }}
+                onClick={() => setSelected("Account")}
+                style={{
+                marginLeft: '-6px',
+                fontSize: '14px'
+              }}
+              >
+                <Link to="/form" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  Account
+                </Link>
+              </MenuItem>
+              
+            </SubMenu>
+
             <Item
-              title="Manage Team"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Contacts Information"
+              title="Client Mangement"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Invoices Balances"
+              title="Bot Management"
               to="/invoices"
-              icon={<ReceiptOutlinedIcon />}
+              icon={<PrecisionManufacturingIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Billing Management"
+              to="/invoices"
+              icon={<PaymentIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Support and Ticketing"
+              to="/invoices"
+              icon={<HelpCenterIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Review and Analysis"
+              to="/invoices"
+              icon={<ReviewsIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -159,22 +268,36 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Pages
+              Profile
             </Typography>
             <Item
-              title="Profile Form"
+              title="Edit Profile"
               to="/form"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
+              title="Change Password"
+              to="/form"
+              icon={<PasswordIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Settings"
+              to="/form"
+              icon={<SettingsIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            {/* <Item
               title="Calendar"
               to="/calendar"
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
             <Item
               title="FAQ Page"
               to="/faq"
