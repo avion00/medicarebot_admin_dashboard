@@ -179,7 +179,7 @@ const Sidebar = () => {
                 fontSize: '14px'
               }}
               >
-                <Link to="/faq" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to="/clientProfile" style={{ textDecoration: 'none', color: 'inherit' }}>
                   Client Profile
                 </Link>
               </MenuItem>

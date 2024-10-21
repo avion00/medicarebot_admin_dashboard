@@ -1,0 +1,111 @@
+.profile .dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.profile .dialog-box {
+  background-color: rgb(240, 240, 230, .9);
+  position: relative;
+  padding: 3em 2em 2em 2em;
+}
+
+.profile .close-icon {
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  font-size: 21px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 50%;
+  transition: all .3s ease-out;
+}
+
+.profile .close-icon:hover{
+  background-color: blanchedalmond;
+}
+
+.profile .dialog-form .profile-row {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: black;
+}
+
+.profile .dialog-form .profile-row input{
+  flex-grow: 1;
+  padding: .25em 1em;
+  margin: 0 .25em;
+  border: 1px solid rgb(125, 125, 125, .8);
+  border-radius: .25em;
+}
+
+.profile .dialog-form .profile-row label{
+  font-weight: 600;
+}
+
+.profile  .dialog-form .submit-button {
+  all: unset;
+  text-align: center;
+  width: 100%;
+  border-radius: 50%;
+  padding: .5em 0;
+  background-color: #165a72;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.profile .add-client-btn{
+  background-color: #165a72;
+  color: white;
+  transition: all .3s;
+}
+
+.profile .add-client-btn:hover{
+  background-color: #0f3c4c;
+}
+
+.profile .profile-card .edit-button, .delete-button, .suspend-button{
+  color: white;
+  transition: all .3s;
+  width: 120px;
+  padding: .75em 0;
+  margin-top: 2em;
+}
+
+.profile .profile-card .edit-button{
+  background-color: #165a72;
+}
+
+.profile .profile-card .delete-button{
+  background-color: rgb(160, 1, 1, 1);
+}
+
+.profile .profile-card .suspend-button{
+  background-color: #2187ab;
+}
+
+.profile .profile-card :where(.edit-button, .delete-button, .suspend-button):hover{
+  background-color: #0f3c4c;
+}
+
+
+
