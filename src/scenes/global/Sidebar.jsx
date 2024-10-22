@@ -54,10 +54,10 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        position: 'sticky', // Keeps the sidebar fixed
+        position: "sticky", // Keeps the sidebar fixed
         top: 0, // Sticks it to the top
-        height: '100vh', // Takes full viewport height
-        overflowY: 'auto', // Scrollable when content overflows
+        height: "100vh", // Takes full viewport height
+        overflowY: "auto", // Scrollable when content overflows
         background: colors.primary[400], // Ensures background color
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
@@ -94,9 +94,13 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]} style={{
-                  fontWeight: "700"
-                }}>
+                <Typography
+                  variant="h3"
+                  color={colors.grey[100]}
+                  style={{
+                    fontWeight: "700",
+                  }}
+                >
                   MEDICAREBOT
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -164,7 +168,7 @@ const Sidebar = () => {
               icon={<ManageAccountsIcon />}
               active={selected === "support"}
               style={{
-                color: colors.grey[100]
+                color: colors.grey[100],
               }}
             >
               <MenuItem
@@ -178,13 +182,16 @@ const Sidebar = () => {
                   },
                 }}
                 onClick={() => setSelected("Client Profile")}
-                
-              style={{
-                marginLeft: '-6px',
-                fontSize: '14px'
-              }}
+                style={{
+                  marginLeft: "-6px",
+                  fontSize: "14px",
+                  marginBottom: ".5em",
+                }}
               >
-                <Link to="/clientProfile" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link
+                  to="/clientProfile"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   Client Profile
                 </Link>
               </MenuItem>
@@ -197,15 +204,19 @@ const Sidebar = () => {
                   },
                   "&.active": {
                     color: "#6870fa !important",
-                  }
+                  },
                 }}
                 onClick={() => setSelected("Assign Bot")}
                 style={{
-                marginLeft: '-6px',
-                fontSize: '14px'
-              }}
+                  marginLeft: "-6px",
+                  fontSize: "14px",
+                  marginBottom: ".5em",
+                }}
               >
-                <Link to="/assignBot" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link
+                  to="/assignBot"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   Assign Bot
                 </Link>
               </MenuItem>
@@ -217,28 +228,24 @@ const Sidebar = () => {
                   },
                   "&.active": {
                     color: "#6870fa !important",
-                  }
+                  },
                 }}
                 onClick={() => setSelected("Account")}
                 style={{
-                marginLeft: '-6px',
-                fontSize: '14px'
-              }}
+                  marginLeft: "-6px",
+                  fontSize: "14px",
+                  marginBottom: "1em",
+                }}
               >
-                <Link to="/account" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link
+                  to="/account"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   Account
                 </Link>
               </MenuItem>
-              
             </SubMenu>
 
-            <Item
-              title="Client Mangement"
-              to="/contacts"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
             <Item
               title="Bot Management"
               to="/invoices"
