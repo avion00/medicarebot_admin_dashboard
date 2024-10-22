@@ -18,6 +18,8 @@ import Calendar from "./scenes/calendar/calendar";
 import ClientProfile from "./scenes/clientProfile/index";
 import AssignBot from "./scenes/assignBot/index";
 import ClientAccount from "./scenes/clientAccount/index";
+import BotManagement from "./scenes/botManagement/index";
+
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -54,6 +56,7 @@ function App() {
               <Route path="/clientProfile" element={<ClientProfile />} />
               <Route path="/assignBot" element={<AssignBot />} />
               <Route path="/account" element={<ClientAccount />} />
+              <Route path="/bot" element={<BotManagement />} />
             </Routes>
           </main>
         </div>

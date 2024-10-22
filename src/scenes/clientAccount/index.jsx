@@ -111,7 +111,7 @@ const AccountManagement = () => {
     ));
 
   return (
-    <Box style={{ position: "relative" }}>
+    <Box m="20px" style={{ position: "relative" }}>
       <Box
         display="flex"
         justifyContent="space-between"
@@ -119,8 +119,8 @@ const AccountManagement = () => {
         alignItems="center"
       >
         <Header
-          title="DASHBOARD"
-          subtitle="Welcome to your Medicare Bot Dashboard"
+          title="CLIENT ACCOUNT"
+          subtitle="Manage your client accounts"
         />
         <Box>
           <Button
