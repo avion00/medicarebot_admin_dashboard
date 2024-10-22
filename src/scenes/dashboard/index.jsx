@@ -26,8 +26,16 @@ const Dashboard = () => {
   return (
     <Box m="20px">
       {/* HEADER */}
-      <Box display="flex" justifyContent="space-between" flexWrap="wrap"  alignItems="center">
-        <Header title="DASHBOARD" subtitle="Welcome to your Medicare Bot Dashboard" />
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        flexWrap="wrap"
+        alignItems="center"
+      >
+        <Header
+          title="DASHBOARD"
+          subtitle="Welcome to your Medicare Bot Dashboard"
+        />
         <Box>
           <Button
             sx={{
@@ -51,8 +59,6 @@ const Dashboard = () => {
         gridAutoRows="140px"
         gap="20px"
       >
-        
-
         {/* ROW 2 */}
         <Box
           gridColumn="span 4"
@@ -83,14 +89,18 @@ const Dashboard = () => {
             >
               <Box display="flex" alignItems="center" gap="1em">
                 <Box height="40px" width="40px">
-                  <img style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: 'cover',
-                    borderRadius: '50%',
-                    border: "1px solid",
-                    borderColor: "rgb(125, 125, 125, 0.3)"
-                  }} src={`../../assets/user.png`} alt="logo"/>
+                  <img
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "50%",
+                      border: "1px solid",
+                      borderColor: "rgb(125, 125, 125, 0.3)",
+                    }}
+                    src={`../../assets/user.png`}
+                    alt="logo"
+                  />
                 </Box>
                 <Box>
                   <Typography
@@ -105,7 +115,7 @@ const Dashboard = () => {
                   </Typography>
                 </Box>
               </Box>
-              
+
               <Box
                 backgroundColor={colors.blueAccent[500]}
                 p="5px 16px"
@@ -152,14 +162,10 @@ const Dashboard = () => {
                 >
                   {bot.btId}
                 </Typography>
-                <Typography color={colors.grey[100]}>
-                  {bot.user}
-                </Typography>
+                <Typography color={colors.grey[100]}>{bot.user}</Typography>
               </Box>
-              <Box >
-                <Box fontSize="12px">
-                  {bot.date}
-                </Box>
+              <Box>
+                <Box fontSize="12px">{bot.date}</Box>
                 <Box fontSize="12px" color={colors.blueAccent[400]}>
                   {bot.time} min ago
                 </Box>
@@ -203,23 +209,27 @@ const Dashboard = () => {
                 >
                   {activities.txId}
                 </Typography>
-                <Typography color={colors.blueAccent[500]}
-                variant="h5"
-                fontWeight="600">
+                <Typography
+                  color={colors.blueAccent[500]}
+                  variant="h5"
+                  fontWeight="600"
+                >
                   {activities.btId}
                 </Typography>
               </Box>
               <Box color={colors.grey[100]}>{activities.date}</Box>
-              <Box sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                fontSize: '12px',
-                maxWidth: '150px',
-                height: '40px',
-                overflow: 'hidden',
-                // textAlign: 'right'
-              }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  fontSize: "12px",
+                  maxWidth: "150px",
+                  height: "40px",
+                  lineHeight: "1.2",
+                  overflow: "hidden",
+                }}
+              >
                 {activities.activity}
               </Box>
             </Box>
@@ -266,7 +276,7 @@ const Dashboard = () => {
             <LineChart isDashboard={true} />
           </Box>
         </Box>
-        
+
         <Box
           gridColumn="span 4"
           gridRow="span 2"
@@ -276,7 +286,8 @@ const Dashboard = () => {
           <Typography
             variant="h3"
             fontWeight="bold"
-            color={colors.greenAccent[500]}>
+            color={colors.greenAccent[500]}
+          >
             Charts
           </Typography>
           <Box
@@ -285,18 +296,18 @@ const Dashboard = () => {
             alignItems="center"
             mt="25px"
           >
-            <ProgressCircle size="125"/>
+            <ProgressCircle size="125" />
             <Typography
               variant="h5"
               color={colors.greenAccent[500]}
               sx={{ mt: "15px" }}
             >
-              $48,352 revenue generated
+              432 Bots are deployed by the client
             </Typography>
-            <Typography>Includes extra misc expenditures and costs</Typography>
+            <Typography>43 client are joined</Typography>
           </Box>
         </Box>
-        
+
         <Box
           gridColumn="span 12"
           gridRow="span 4"

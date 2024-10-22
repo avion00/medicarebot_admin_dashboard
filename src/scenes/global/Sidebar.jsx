@@ -54,6 +54,11 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
+        position: 'sticky', // Keeps the sidebar fixed
+        top: 0, // Sticks it to the top
+        height: '100vh', // Takes full viewport height
+        overflowY: 'auto', // Scrollable when content overflows
+        background: colors.primary[400], // Ensures background color
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
         },
@@ -200,7 +205,7 @@ const Sidebar = () => {
                 fontSize: '14px'
               }}
               >
-                <Link to="/form" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to="/assignBot" style={{ textDecoration: 'none', color: 'inherit' }}>
                   Assign Bot
                 </Link>
               </MenuItem>
@@ -220,7 +225,7 @@ const Sidebar = () => {
                 fontSize: '14px'
               }}
               >
-                <Link to="/form" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to="/account" style={{ textDecoration: 'none', color: 'inherit' }}>
                   Account
                 </Link>
               </MenuItem>

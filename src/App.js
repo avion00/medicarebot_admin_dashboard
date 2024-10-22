@@ -16,6 +16,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
 import ClientProfile from "./scenes/clientProfile/index";
+import AssignBot from "./scenes/assignBot/index";
+import ClientAccount from "./scenes/clientAccount/index";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -25,9 +27,17 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="app">
+        <div className="app" style={{ display: "flex", height: "100vh" }}>
           <Sidebar isSidebar={isSidebar} />
-          <main className="content">
+          <main
+            className="content"
+            style={{
+              flex: 1,
+              overflowY: "auto", // Allow main content to scroll independently
+              padding: "20px",
+              position: "relative",
+            }}
+          >
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
@@ -42,7 +52,8 @@ function App() {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/clientProfile" element={<ClientProfile />} />
-              
+              <Route path="/assignBot" element={<AssignBot />} />
+              <Route path="/account" element={<ClientAccount />} />
             </Routes>
           </main>
         </div>

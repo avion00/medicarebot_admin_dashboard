@@ -1,0 +1,58 @@
+export const ClientActivity = [
+  {
+    txId: "01e4dsa",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "Medicarebot deploy in firebase",
+  },
+  {
+    txId: "0315dsaa",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "Admin deploy in firebase yet",
+  },
+  {
+    txId: "01e4dsa",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "Client deploy in firebase together",
+  },
+  {
+    txId: "51034szv",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "Perersoad of deploy in firebase",
+  },
+  {
+    txId: "0a123sb",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "medicare deploy in firebase",
+  },
+  {
+    txId: "01e4dsa",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "medicare deploy in firebase",
+  },
+  {
+    txId: "120s51a",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "medicare deploy in firebase",
+  },
+  {
+    txId: "0315dsaa",
+    btId: "e3seese",
+    date: "2021-09-01",
+    time: "4",
+    activity: "medicare deploy in firebase",
+  },
+];

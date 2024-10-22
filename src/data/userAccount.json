@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "username": "johnny",
+    "email": "omomom@example.com",
+    "address": "ktm",
+    "dob": "2001-03-11",
+    "contact": "+977 9805323432",
+    "isFrozen": false
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "username": "jane",
+    "email": "ooo@example.com",
+    "address": "biratnagar",
+    "dob": "2001-03-11",
+    "contact": "+977 9805323432",
+    "isFrozen": true
+  },
+  { 
+    "id": 3,
+    "name": "Om prakash mandal",
+    "username": "om-tech",
+    "email": "omprakash.tech@gmail.com",
+    "address": "biratnagar",
+    "dob": "2001-03-11",
+    "contact": "+977 9805323432",
+    "isFrozen": false
+  }
+]
