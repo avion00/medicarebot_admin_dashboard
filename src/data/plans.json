@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Basic Plan",
+    "price": 10.99,
+    "status": "Active"
+  },
+  {
+    "name": "Pro Plan",
+    "price": 29.99,
+    "status": "Active"
+  },
+  {
+    "name": "Enterprise Plan",
+    "price": 59.99,
+    "status": "Inactive"
+  }
+]

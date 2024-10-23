@@ -19,6 +19,8 @@ import ClientProfile from "./scenes/clientProfile/index";
 import AssignBot from "./scenes/assignBot/index";
 import ClientAccount from "./scenes/clientAccount/index";
 import BotManagement from "./scenes/botManagement/index";
+import Billing from "./scenes/billing/index";
+
 
 
 function App() {
@@ -57,6 +59,7 @@ function App() {
               <Route path="/assignBot" element={<AssignBot />} />
               <Route path="/account" element={<ClientAccount />} />
               <Route path="/bot" element={<BotManagement />} />
+              <Route path="/billing" element={<Billing />} />
             </Routes>
           </main>
         </div>

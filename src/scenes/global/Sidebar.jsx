@@ -16,16 +16,16 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
-import PaymentIcon from '@mui/icons-material/Payment';
-import HelpCenterIcon from '@mui/icons-material/HelpCenter';
-import ReviewsIcon from '@mui/icons-material/Reviews';
-import PasswordIcon from '@mui/icons-material/Password';
-import SettingsIcon from '@mui/icons-material/Settings';
-import PersonIcon from '@mui/icons-material/Person';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import PaymentIcon from "@mui/icons-material/Payment";
+import HelpCenterIcon from "@mui/icons-material/HelpCenter";
+import ReviewsIcon from "@mui/icons-material/Reviews";
+import PasswordIcon from "@mui/icons-material/Password";
+import SettingsIcon from "@mui/icons-material/Settings";
+import PersonIcon from "@mui/icons-material/Person";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -255,7 +255,7 @@ const Sidebar = () => {
             />
             <Item
               title="Billing Management"
-              to="/invoices"
+              to="/billing"
               icon={<PaymentIcon />}
               selected={selected}
               setSelected={setSelected}
