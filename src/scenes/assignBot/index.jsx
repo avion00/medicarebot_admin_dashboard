@@ -9,7 +9,7 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../components/Header";
 
 
-const Dashboard = () => {
+const AssignBot = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -189,4 +189,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AssignBot;

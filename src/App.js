@@ -20,6 +20,8 @@ import AssignBot from "./scenes/assignBot/index";
 import ClientAccount from "./scenes/clientAccount/index";
 import BotManagement from "./scenes/botManagement/index";
 import Billing from "./scenes/billing/index";
+import Support from "./scenes/support/index";
+import Reports from "./scenes/reports/index";
 
 
 
@@ -60,6 +62,8 @@ function App() {
               <Route path="/account" element={<ClientAccount />} />
               <Route path="/bot" element={<BotManagement />} />
               <Route path="/billing" element={<Billing />} />
+              <Route path="/support" element={<Support />} />
+              <Route path="/reports" element={<Reports />} />
             </Routes>
           </main>
         </div>

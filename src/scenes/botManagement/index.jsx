@@ -15,7 +15,7 @@ import RefreshRoundedIcon from "@mui/icons-material/RefreshRounded";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 
-const Dashboard = () => {
+const Bot = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [bots, setBots] = useState([]);
@@ -354,4 +354,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Bot;

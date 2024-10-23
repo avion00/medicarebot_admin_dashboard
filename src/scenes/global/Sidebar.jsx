@@ -19,7 +19,7 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import PaymentIcon from "@mui/icons-material/Payment";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
-import ReviewsIcon from "@mui/icons-material/Reviews";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 import PasswordIcon from "@mui/icons-material/Password";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PersonIcon from "@mui/icons-material/Person";
@@ -148,7 +148,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             /> */}
-
             <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -245,7 +244,6 @@ const Sidebar = () => {
                 </Link>
               </MenuItem>
             </SubMenu>
-
             <Item
               title="Bot Management"
               to="/bot"
@@ -262,19 +260,18 @@ const Sidebar = () => {
             />
             <Item
               title="Support and Ticketing"
-              to="/invoices"
+              to="/support"
               icon={<HelpCenterIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Review and Analysis"
-              to="/invoices"
-              icon={<ReviewsIcon />}
+              title="Reports and Analysis"
+              to="/reports"
+              icon={<AssessmentIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-
             <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -317,7 +314,6 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
             <Typography
               variant="h6"
               color={colors.grey[300]}

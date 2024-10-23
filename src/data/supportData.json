@@ -1,0 +1,8 @@
+{
+  "responses": {
+    "setup": "I can help you with the setup process. Please follow this guide: [link]",
+    "training": "For training purposes, we provide tutorials and documentation here: [link]",
+    "configuration": "You can configure the bot with the following steps: [link]",
+    "default": "Sorry, I didn't understand that. Do you need help with setup, training, or configuration?"
+  }
+}

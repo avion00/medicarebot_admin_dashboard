@@ -1,0 +1,28 @@
+{
+  "performanceData": [
+    { "day": "2024-10-01", "value": 30 },
+    { "day": "2024-10-02", "value": 53 },
+    { "day": "2024-10-03", "value": 10 },
+    { "day": "2024-10-04", "value": 5 },
+    { "day": "2024-10-05", "value": 15 },
+    { "day": "2024-10-06", "value": 20 },
+    { "day": "2024-10-07", "value": 30 },
+    { "day": "2024-10-08", "value": 80 },
+    { "day": "2024-10-09", "value": 10 },
+    { "day": "2024-10-10", "value": 34 }
+  ],
+  "activityData": [
+    { "day": "2024-10-01", "clients": 10 },
+    { "day": "2024-10-02", "clients": 5 },
+    { "day": "2024-10-03", "clients": 45 },
+    { "day": "2024-10-04", "clients": 25 },
+    { "day": "2024-10-05", "clients": 5 },
+    { "day": "2024-10-06", "clients": 65 },
+    { "day": "2024-10-07", "clients": 35 },
+    { "day": "2024-10-08", "clients": 95 },
+    { "day": "2024-10-09", "clients": 15 },
+    { "day": "2024-10-10", "clients": 2 }
+  ],
+  "successRate": 75,
+  "clientSatisfaction": 85
+}
