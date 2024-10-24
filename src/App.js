@@ -22,6 +22,8 @@ import BotManagement from "./scenes/botManagement/index";
 import Billing from "./scenes/billing/index";
 import Support from "./scenes/support/index";
 import Reports from "./scenes/reports/index";
+import SignIn from "./scenes/signIn/index";
+
 
 
 
@@ -64,6 +66,7 @@ function App() {
               <Route path="/billing" element={<Billing />} />
               <Route path="/support" element={<Support />} />
               <Route path="/reports" element={<Reports />} />
+              <Route path="/signin" element={<SignIn />} />
             </Routes>
           </main>
         </div>

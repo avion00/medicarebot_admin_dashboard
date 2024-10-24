@@ -7,17 +7,11 @@ import { Box, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 
-import { TextField } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-
 function Reports() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [selectedDate, setSelectedDate] = React.useState(null);
 
   // Filter data based on selected date range
   const filterDataByDate = (allData, filterStartDate, filterEndDate) => {
@@ -85,94 +79,85 @@ function Reports() {
             alignItems: "center",
           }}
         >
-          <label
-            htmlFor="startDate"
-            style={{
-              fontWeight: "600",
-            }}
-          >
-            Start Date:
-          </label>
-          <input
-            type="date"
-            id="startDate"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            style={{
-              fontFamily: "Inter",
-              padding: ".5em 1em",
-              borderRadius: ".25em",
-              border: "1px solid rgb(125, 125, 125, .3)",
-              backgroundColor: colors.blueAccent[900],
-              color: "inherit",
-            }}
-            onFocus={(e) => {
-              e.target.style.outline = `1px solid ${colors.blueAccent[600]}`;
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = "none";
-              e.target.style.outline = "none";
-            }}
-          />
-
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              label="Select Date"
-              value={selectedDate}
-              onChange={(newValue) => setSelectedDate(newValue)}
-              renderInput={(params) => <TextField {...params} />}
+          <Box>
+            <label
+              htmlFor="startDate"
+              style={{
+                fontWeight: "600",
+                marginRight: ".5em",
+              }}
+            >
+              Start Date:
+            </label>
+            <input
+              type="date"
+              id="startDate"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              style={{
+                fontFamily: "Inter",
+                padding: ".75em 1.2em",
+                borderRadius: ".25em",
+                border: "1px solid rgb(125, 125, 125, .5)",
+                backgroundColor: colors.blueAccent[900],
+                color: "inherit",
+                cursor: 'pointer'
+              }}
+              onFocus={(e) => {
+                e.target.style.outline = `1px solid ${colors.blueAccent[600]}`;
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "none";
+                e.target.style.outline = "none";
+              }}
             />
-          </LocalizationProvider>
-          <label
-            htmlFor="endDate"
-            style={{
-              fontWeight: "600",
-            }}
-          >
-            End Date:
-          </label>
-          <input
-            type="date"
-            id="endDate"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            style={{
-              fontFamily: "Inter",
-              padding: ".5em 1em",
-              borderRadius: ".25em",
-              border: "1px solid rgb(125, 125, 125, .3)",
-              backgroundColor: colors.blueAccent[900],
-              color: "inherit",
-            }}
-            onFocus={(e) => {
-              e.target.style.outline = `1px solid ${colors.blueAccent[600]}`;
-            }}
-            onBlur={(e) => {
-              e.target.style.borderColor = "none";
-              e.target.style.outline = "none";
-            }}
-          />
+          </Box>
+          <Box>
+            <label
+              htmlFor="endDate"
+              style={{
+                fontWeight: "600",
+                marginRight: ".5em",
+              }}
+            >
+              End Date:
+            </label>
+            <input
+              type="date"
+              id="endDate"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              style={{
+                fontFamily: "Inter",
+                padding: ".75em 1.2em",
+                borderRadius: ".25em",
+                border: "1px solid rgb(125, 125, 125, .5)",
+                backgroundColor: colors.blueAccent[900],
+                color: "inherit",
+                cursor: 'pointer'
+              }}
+              onFocus={(e) => {
+                e.target.style.outline = `1px solid ${colors.blueAccent[600]}`;
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = "none";
+                e.target.style.outline = "none";
+              }}
+            />
+          </Box>
         </div>
 
         <div className="report-section">
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "bold",
-              padding: ".65em 1em",
-              backgroundColor: "rgb(1, 150, 220, 0.1)",
-              borderRadius: ".25em",
-              margin: "2em .75em",
-            }}
-          >
-            Performance Report
-          </h2>
-          <div
+          <Box mt="2em">
+            <Header title="Performance Report" />
+          </Box>
+          <Box
             className="graph"
             style={{
               height: "300px",
-              padding: "1em",
-              margin: "1em",
+              // border: '1px solid red',
+              backgroundColor: colors.primary[400],
+              padding: "2em 0 1em 0",
             }}
           >
             <ResponsiveBar
@@ -208,50 +193,44 @@ function Reports() {
                 axis: {
                   ticks: {
                     text: {
-                      fill: "text.primary",
+                      fill: colors.primary[100],
                       fontSize: 12,
-                      fontFamily: "Rubik, sans-serif",
+                      fontWeight: 600,
+                      fontFamily: "Inter",
                     },
                   },
                   legend: {
                     text: {
-                      fill: "text.primary",
+                      fill: colors.primary[100],
                       fontSize: 14,
-                      fontWeight: "500",
-                      fontFamily: "Rubik, sans-serif",
+                      fontWeight: 600,
+                      fontFamily: "Inter",
                     },
                   },
                 },
                 legends: {
                   text: {
-                    fill: "text.primary",
-                    fontFamily: "Rubik, sans-serif",
+                    fill: colors.primary[100],
+                    fontSize: 14,
+                    fontWeight: 600,
+                    fontFamily: "Inter",
                   },
                 },
               }}
             />
-          </div>
+          </Box>
         </div>
 
         <div className="activity-section">
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "bold",
-              padding: ".65em 1em",
-              backgroundColor: "rgb(1, 150, 220, 0.1)",
-              borderRadius: ".25em",
-              margin: "2em .75em",
-            }}
-          >
-            Client Activity
-          </h2>
+          <Box mt="2em">
+            <Header title="Client Activity" />
+          </Box>
           <div
             className="graph"
             style={{
               height: "300px",
-              padding: "1em",
-              margin: "1em",
+              backgroundColor: colors.primary[400],
+              padding: "2em 0 1em 0",
             }}
           >
             <ResponsiveLine
@@ -295,24 +274,27 @@ function Reports() {
                 axis: {
                   ticks: {
                     text: {
-                      fill: "text.primary",
+                      fill: colors.primary[100],
                       fontSize: 12,
-                      fontFamily: "Rubik, sans-serif",
+                      fontWeight: 600,
+                      fontFamily: "Inter",
                     },
                   },
                   legend: {
                     text: {
-                      fill: "text.primary",
+                      fill: colors.primary[100],
                       fontSize: 14,
-                      fontWeight: "500",
-                      fontFamily: "Rubik, sans-serif",
+                      fontWeight: 600,
+                      fontFamily: "Inter",
                     },
                   },
                 },
                 legends: {
                   text: {
-                    fill: "text.primary",
-                    fontFamily: "Rubik, sans-serif",
+                    fill: colors.primary[100],
+                    fontSize: 14,
+                    fontWeight: 600,
+                    fontFamily: "Inter",
                   },
                 },
               }}
@@ -321,47 +303,36 @@ function Reports() {
         </div>
 
         <div className="analytics-section">
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "bold",
-              padding: ".65em 1em",
-              backgroundColor: "rgb(1, 150, 220, 0.1)",
-              borderRadius: ".25em",
-              margin: "2em .75em",
-            }}
-          >
-            Analytics Tools
-          </h2>
+          <Box mt="2em">
+            <Header title="Analytics Tools" />
+          </Box>
           <div
             className="analytics-cards"
             style={{
-              margin: "1em",
               display: "flex",
               flexWrap: "wrap",
               alignItems: "center",
               gap: "1em",
-              justifyContent: "space-around",
+              justifyContent: "space-between",
             }}
           >
             <div
               className="card"
               style={{
-                padding: "1em",
                 height: "300px",
                 width: "42%",
                 minWidth: "300px",
                 flexGrow: 1,
                 alignContent: "center",
                 textAlign: "center",
-                boxShadow: "2px 2px 300px 5px rgb(1, 150, 220, .25) inset",
-                borderRadius: ".5em",
+                boxShadow: `2px 2px 300px 5px ${colors.primary[400]} inset`,
               }}
             >
               <h3
                 style={{
-                  fontSize: "20px",
-                  fontWeight: "600",
+                  fontSize: "1em",
+                  fontWeight: "700",
+                  marginBottom: "2em",
                 }}
               >
                 Conversation Success Rate
@@ -392,15 +363,18 @@ function Reports() {
                   theme={{
                     labels: {
                       text: {
-                        fontSize: 12,
-                        fill: "text.primary",
-                        fontFamily: "Rubik, sans-serif",
+                        fill: colors.primary[100],
+                        fontSize: 14,
+                        fontWeight: 600,
+                        fontFamily: "Inter",
                       },
                     },
                     legends: {
                       text: {
-                        fill: "text.primary",
-                        fontFamily: "Rubik, sans-serif",
+                        fill: colors.primary[100],
+                        fontSize: 14,
+                        fontWeight: 600,
+                        fontFamily: "Inter",
                       },
                     },
                   }}
@@ -411,21 +385,20 @@ function Reports() {
             <div
               className="card"
               style={{
-                padding: "1em",
                 height: "300px",
                 width: "42%",
                 minWidth: "300px",
                 flexGrow: 1,
                 alignContent: "center",
                 textAlign: "center",
-                boxShadow: "2px 2px 300px 5px rgb(1, 150, 220, .25) inset",
-                borderRadius: ".5em",
+                boxShadow: `2px 2px 300px 5px ${colors.primary[400]} inset`,
               }}
             >
               <h3
                 style={{
-                  fontSize: "20px",
+                  fontSize: "1em",
                   fontWeight: "600",
+                  marginBottom: "2em",
                 }}
               >
                 Client Satisfaction
@@ -456,15 +429,18 @@ function Reports() {
                   theme={{
                     labels: {
                       text: {
-                        fontSize: 12,
-                        fill: "text.primary",
-                        fontFamily: "Rubik, sans-serif",
+                        fill: colors.primary[100],
+                        fontSize: 14,
+                        fontWeight: 600,
+                        fontFamily: "Inter",
                       },
                     },
                     legends: {
                       text: {
-                        fill: "text.primary",
-                        fontFamily: "Rubik, sans-serif",
+                        fill: colors.primary[100],
+                        fontSize: 14,
+                        fontWeight: 600,
+                        fontFamily: "Inter",
                       },
                     },
                   }}
