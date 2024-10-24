@@ -2,19 +2,24 @@ import React from "react";
 import { Box, useTheme, Typography } from "@mui/material";
 import { tokens } from "../theme";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import EditIcon from "@mui/icons-material/Edit";
+import PasswordIcon from "@mui/icons-material/Password";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Link } from "react-router-dom";
 
-// DropdownMenu component
 const DropdownMenu = ({ items }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  // Define icons for each item
   const icons = {
-    "View Profile": <AccountCircleIcon sx={{ marginRight: "8px" }} />,
-    "Edit Profile": <EditIcon sx={{ marginRight: "8px" }} />,
+    Profile: <AccountCircleIcon sx={{ marginRight: "8px" }} />,
+    "Change Password": <PasswordIcon sx={{ marginRight: "8px" }} />,
     "Log out": <ExitToAppIcon sx={{ marginRight: "8px" }} />,
+  };
+
+  const links = {
+    Profile: "/editProfile",
+    "Change Password": "/changePassword",
+    "Log out": "/",
   };
 
   return (
@@ -32,12 +37,7 @@ const DropdownMenu = ({ items }) => {
       }}
     >
       <ul
-        style={{
-          listStyle: "none",
-          padding: "0",
-          margin: "0",
-          width: "220px",
-        }}
+        style={{ listStyle: "none", padding: "0", margin: "0", width: "220px" }}
       >
         {items.map((item, index) => (
           <li
@@ -51,7 +51,6 @@ const DropdownMenu = ({ items }) => {
               display: "flex",
               alignItems: "center",
               cursor: "pointer",
-              boxSizing: "border-box",
               transition: "background-color 0.3s ease, color 0.3s ease",
               color: item === "Log out" ? colors.redAccent[500] : "inherit",
             }}
@@ -63,8 +62,19 @@ const DropdownMenu = ({ items }) => {
               e.target.style.backgroundColor = "transparent";
             }}
           >
-            {icons[item]} {/* Display the corresponding icon */}
-            <Typography variant="body2">{item}</Typography> {/* Item text */}
+            <Link
+              to={links[item]}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
+              }}
+            >
+              {icons[item]}
+              <Typography variant="body2">{item}</Typography>
+            </Link>
           </li>
         ))}
       </ul>

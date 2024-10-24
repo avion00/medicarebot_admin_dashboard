@@ -8,25 +8,27 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import DropdownMenu from "../../components/DropDownProfileMenu"; // Import DropdownMenu
+import DropdownMenu from "../../components/DropDownProfileMenu";
 
 const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
 
-  // Define the dropdown menu items
-  const dropdownItems = ["View Profile", "Edit Profile", "Log out"];
+  const dropdownItems = ["Profile", "Change Password", "Log out"];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+
   const handleDropdownToggle = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
+
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsDropdownOpen(false);
     }
   };
+
   useEffect(() => {
     if (isDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -40,7 +42,6 @@ const Topbar = () => {
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
-      {/* SEARCH BAR */}
       <Box
         display="flex"
         backgroundColor={colors.primary[400]}
@@ -52,7 +53,6 @@ const Topbar = () => {
         </IconButton>
       </Box>
 
-      {/* ICONS */}
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
@@ -71,11 +71,7 @@ const Topbar = () => {
           <IconButton onClick={handleDropdownToggle}>
             <PersonOutlinedIcon />
           </IconButton>
-
-          {/* Dropdown only appears if isDropdownOpen is true */}
-          {isDropdownOpen && (
-            <DropdownMenu items={dropdownItems}/>
-          )}
+          {isDropdownOpen && <DropdownMenu items={dropdownItems} />}
         </Box>
       </Box>
     </Box>

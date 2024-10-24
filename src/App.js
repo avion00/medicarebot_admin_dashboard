@@ -23,7 +23,7 @@ import Billing from "./scenes/billing/index";
 import Support from "./scenes/support/index";
 import Reports from "./scenes/reports/index";
 import LogIn from "./scenes/logIn/index";
-import SignUp from "./scenes/signUp/index";
+import Register from "./scenes/register/index";
 import ChangePassword from "./scenes/changePassword/index";
 import EditProfile from "./scenes/editProfile/index";
 
@@ -36,7 +36,7 @@ function App() {
   // Determine if the current path is for authentication
   const isAuthPage =
     location.pathname === "/" ||
-    location.pathname === "/signUp" ||
+    location.pathname === "/register" ||
     location.pathname === "/logIn";
 
   return (
@@ -47,7 +47,7 @@ function App() {
           <div className="auth-page" style={{ height: "100vh" }}>
             <Routes>
               <Route path="/" element={<LogIn />} />
-              <Route path="/signUp" element={<SignUp />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/logIn" element={<LogIn />} />
               <Route path="*" element={<Navigate to="/logIn" />} />
             </Routes>
@@ -87,7 +87,6 @@ function App() {
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/changePassword" element={<ChangePassword />} />
                 <Route path="/editProfile" element={<EditProfile />} />
-                
               </Routes>
             </main>
           </div>

@@ -1,3 +1,5 @@
+import { useContext, useState } from "react";
+
 import {
   Box,
   Button,
@@ -5,6 +7,7 @@ import {
   useTheme,
   IconButton,
   InputAdornment,
+  Divider,
 } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -14,13 +17,19 @@ import { tokens, ColorModeContext } from "../../theme";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import { useContext, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
-const Form = () => {
+import GoogleIcon from "@mui/icons-material/Google";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
+const LogIn = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
@@ -36,8 +45,15 @@ const Form = () => {
 
   const handleFormSubmit = (values) => {
     console.log(values);
-    // After form submission, redirect to the dashboard page
     navigate("/dashboard");
+  };
+
+  const buttonStyles = {
+    flexGrow: 1,
+    padding: ".75em 1em",
+    borderColor: colors.grey[900],
+    color: colors.blueAccent[100],
+    borderRadius: "3px",
   };
 
   return (
@@ -109,7 +125,7 @@ const Form = () => {
                   alignItems: "center",
                   gap: ".5em",
                 }}
-                href="/signUp"
+                href="/register"
               >
                 <ArrowForwardIcon />
                 Create New Account
@@ -205,36 +221,35 @@ const Form = () => {
                       alignItems: "center",
                       justifyContent: "space-between",
                       padding: "0 .5em",
-                      marginBottom: "1.5em",
+                      marginBottom: "1em",
                       width: "100%",
                     }}
                   >
                     {/* Remember Me Section */}
-                    <Box
-                      sx={{
-                        display: "flex",
-                        gap: "1em",
-                        alignItems: "center",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => {
-                        const checkbox =
-                          document.getElementById("rememberMeCheckbox");
-                        checkbox.checked = !checkbox.checked;
-                      }}
-                    >
-                      {/* Checkbox Input */}
-                      <input
-                        type="checkbox"
-                        id="rememberMeCheckbox"
-                        onClick={(e) => e.stopPropagation()}
-                        style={{ cursor: "pointer" }}
-                      />
-
-                      {/* Remember Label */}
-                      <span style={{ color: colors.blueAccent[200] }}>
-                        Remember
-                      </span>
+                    <Box>
+                      <FormGroup>
+                        <FormControlLabel
+                          required
+                          control={
+                            <Checkbox
+                              sx={{
+                                color: colors.blueAccent[100], // Default color
+                                "&.Mui-checked": {
+                                  color: colors.blueAccent[100],
+                                },
+                              }}
+                            />
+                          }
+                          label={
+                            <span style={{ color: colors.blueAccent[100] }}>
+                              Remember
+                            </span>
+                          }
+                          sx={{
+                            color: colors.blueAccent[200], // Ensure label color is set for default
+                          }}
+                        />
+                      </FormGroup>
                     </Box>
 
                     <Box
@@ -257,15 +272,90 @@ const Form = () => {
                     </Box>
                   </Box>
                 </Box>
+
                 <Box display="flex" justifyContent="end" mt="20px">
                   <Button
                     type="submit"
                     color="secondary"
                     variant="contained"
-                    startIcon={<LoginIcon />} // Add the icon before the text
+                    startIcon={<LoginIcon />}
                     sx={{ gridColumn: "span 4", width: "100%", padding: "1em" }}
                   >
-                    Log In
+                    Continue
+                  </Button>
+                </Box>
+
+                {/* Horizontal line and centered text */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "20px 0",
+                  }}
+                >
+                  <Divider sx={{ flexGrow: 1 }} />
+                  <span
+                    style={{ margin: ".5em", color: colors.blueAccent[100] }}
+                  >
+                    or sign in with
+                  </span>
+                  <Divider sx={{ flexGrow: 1 }} />
+                </Box>
+
+                {/* Social Media Buttons */}
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  mt="20px"
+                  gap="1em"
+                >
+                  <Button
+                    variant="outlined"
+                    startIcon={<GoogleIcon />}
+                    sx={{
+                      ...buttonStyles,
+                      backgroundColor: colors.redAccent[700],
+                      "&:hover": {
+                        backgroundColor: colors.primary[400],
+                      },
+                    }}
+                    onClick={() => {
+                      // Handle Google sign-in logic here
+                    }}
+                  >
+                    Google
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    startIcon={<TwitterIcon />}
+                    sx={{
+                      ...buttonStyles,
+                      backgroundColor: colors.greenAccent[700],
+                      "&:hover": {
+                        backgroundColor: colors.primary[400],
+                      },
+                    }}
+                    onClick={() => {
+                      // Handle Twitter sign-in logic here
+                    }}
+                  >
+                    Twitter
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    startIcon={<GitHubIcon />}
+                    sx={{
+                      ...buttonStyles,
+                      backgroundColor: colors.grey[700],
+                      "&:hover": {
+                        backgroundColor: colors.primary[400],
+                      },
+                    }}
+                    onClick={() => {
+                      // Handle GitHub sign-in logic here
+                    }}
+                  >
+                    GitHub
                   </Button>
                 </Box>
               </form>
@@ -278,8 +368,8 @@ const Form = () => {
 };
 
 const checkoutSchema = yup.object().shape({
-  email: yup.string().email("invalid email").required("required"),
-  password: yup.string().required("required"),
+  email: yup.string().email("Invalid email").required("Required"),
+  password: yup.string().required("Required"),
 });
 
 const initialValues = {
@@ -287,4 +377,4 @@ const initialValues = {
   password: "",
 };
 
-export default Form;
+export default LogIn;
