@@ -1,15 +1,70 @@
-import { Box, Button, TextField } from "@mui/material";
+import { useState } from "react";
+import {
+  Box,
+  Button,
+  TextField,
+  useTheme,
+  InputAdornment,
+  IconButton,
+  Snackbar,
+  Alert,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { tokens } from "../../theme";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const ChangePassword = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  const handleFormSubmit = (values) => {
-    console.log(values);
+  const [showPassword, setShowPassword] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const navigate = useNavigate();
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
+
+  const handleFormSubmit = (values) => {
+    // Here you would handle the password change logic, such as an API call
+
+    // If password change is successful, open the Snackbar
+    setOpenSnackbar(true);
+
+    // Optional: Navigate after a brief delay to allow the user to see the message
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 1500); // Navigate after 1.5 seconds
+  };
+
+  const initialValues = {
+    oldpassword: "",
+    newpassword: "",
+    confirmpassword: "",
+  };
+
+  const checkoutSchema = yup.object().shape({
+    oldpassword: yup.string().required("Old password is required"),
+    newpassword: yup
+      .string()
+      .min(6, "Password must be at least 6 characters long")
+      .notOneOf(
+        [yup.ref("oldpassword")],
+        "New password cannot be the same as the old password"
+      )
+      .required("New password is required"),
+    confirmpassword: yup
+      .string()
+      .oneOf([yup.ref("newpassword"), null], "Passwords must match")
+      .required("Confirm password is required"),
+  });
 
   return (
     <Box m="20px">
@@ -40,115 +95,141 @@ const ChangePassword = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
-                label="First Name"
+                type={showPassword ? "text" : "password"}
+                label="Old Password"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.firstName}
-                name="firstName"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
+                value={values.oldpassword}
+                name="oldpassword"
+                error={!!touched.oldpassword && !!errors.oldpassword}
+                helperText={touched.oldpassword && errors.oldpassword}
+                sx={{
+                  gridColumn: "span 4",
+                  "& .MuiFormLabel-root.Mui-focused": {
+                    color: colors.blueAccent[500],
+                    fontWeight: "bold",
+                  },
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment
+                      position="end"
+                      style={{ marginRight: "1em" }}
+                    >
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
+
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
-                label="Last Name"
+                type={showPassword ? "text" : "password"}
+                label="New Password"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.lastName}
-                name="lastName"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
+                value={values.newpassword}
+                name="newpassword"
+                error={!!touched.newpassword && !!errors.newpassword}
+                helperText={touched.newpassword && errors.newpassword}
+                sx={{
+                  gridColumn: "span 4",
+                  "& .MuiFormLabel-root.Mui-focused": {
+                    color: colors.blueAccent[500],
+                    fontWeight: "bold",
+                  },
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment
+                      position="end"
+                      style={{ marginRight: "1em" }}
+                    >
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
+
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
-                label="Email"
+                type={showPassword ? "text" : "password"}
+                label="Confirm Password"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.email}
-                name="email"
-                error={!!touched.email && !!errors.email}
-                helperText={touched.email && errors.email}
-                sx={{ gridColumn: "span 4" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Contact Number"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.contact}
-                name="contact"
-                error={!!touched.contact && !!errors.contact}
-                helperText={touched.contact && errors.contact}
-                sx={{ gridColumn: "span 4" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Address 1"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.address1}
-                name="address1"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
-                sx={{ gridColumn: "span 4" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Address 2"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.address2}
-                name="address2"
-                error={!!touched.address2 && !!errors.address2}
-                helperText={touched.address2 && errors.address2}
-                sx={{ gridColumn: "span 4" }}
+                value={values.confirmpassword}
+                name="confirmpassword"
+                error={!!touched.confirmpassword && !!errors.confirmpassword}
+                helperText={touched.confirmpassword && errors.confirmpassword}
+                sx={{
+                  gridColumn: "span 4",
+                  "& .MuiFormLabel-root.Mui-focused": {
+                    color: colors.blueAccent[500],
+                    fontWeight: "bold",
+                  },
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment
+                      position="end"
+                      style={{ marginRight: "1em" }}
+                    >
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Box>
+
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create New User
+                Change Password
               </Button>
             </Box>
           </form>
         )}
       </Formik>
+
+      {/* Snackbar for showing success message */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={9000}
+        onClose={() => setOpenSnackbar(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }} // Position the Snackbar at the top center
+      >
+        <Alert
+          onClose={() => setOpenSnackbar(false)}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          You have successfully changed your password!
+        </Alert>
+      </Snackbar>
     </Box>
   );
-};
-
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
-const checkoutSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  contact: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string().required("required"),
-});
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  contact: "",
-  address1: "",
-  address2: "",
 };
 
 export default ChangePassword;
