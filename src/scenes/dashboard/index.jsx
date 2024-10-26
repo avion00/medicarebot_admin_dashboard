@@ -108,7 +108,7 @@ const Dashboard = () => {
               </Box>
 
               <Box
-                backgroundColor={colors.blueAccent[500]}
+                backgroundColor={colors.greenAccent[700]}
                 p="5px 16px"
                 borderRadius="4px"
               >

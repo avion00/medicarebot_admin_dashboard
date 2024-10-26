@@ -3,11 +3,9 @@ import { tokens } from "../../theme";
 import { BotAssign } from "../../data/botAssign";
 import { ClientActivity } from "../../data/clientActivity";
 
-
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
 import Header from "../../components/Header";
-
 
 const AssignBot = () => {
   const theme = useTheme();
@@ -107,7 +105,7 @@ const AssignBot = () => {
               </Box>
 
               <Box
-                backgroundColor={colors.blueAccent[500]}
+                backgroundColor={colors.greenAccent[700]}
                 p="5px 16px"
                 borderRadius="4px"
               >
@@ -175,7 +173,7 @@ const AssignBot = () => {
                   fontSize: "12px",
                   maxWidth: "150px",
                   height: "40px",
-                  lineHeight: '1.2',
+                  lineHeight: "1.2",
                   overflow: "hidden",
                 }}
               >

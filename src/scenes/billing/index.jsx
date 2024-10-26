@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { ResponsivePie } from "@nivo/pie";
 import Plans from "../../data/plans.json";
-// import "./style.css";
 import { Box, Button, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
@@ -101,9 +100,10 @@ function BillingManagement(props) {
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
+              textTransform: 'capitalize'
             }}
           >
-            <DriveFileRenameOutlineIcon sx={{ mr: "10px" }} />
+            <DriveFileRenameOutlineIcon sx={{ mr: ".5em" }} />
             Create New Plans
           </Button>
         </Box>
@@ -117,7 +117,7 @@ function BillingManagement(props) {
               textAlign="center"
               width="100%"
             >
-              <thead style={{ backgroundColor: colors.blueAccent[600] }}>
+              <thead style={{ backgroundColor: colors.blueAccent[700] }}>
                 <tr>
                   <th style={{ width: "25%", padding: "1em 0.25em" }}>
                     Plan Name
@@ -235,14 +235,14 @@ function BillingManagement(props) {
                 maxWidth: "50%",
               }}
             >
-              <h3 style={{ color: colors.greenAccent[500] }}>
+              <h3 style={{ color: colors.blueAccent[500] }}>
                 Interaction Success Rate
               </h3>
 
               <ResponsivePie
                 data={KPIData}
                 margin={{
-                  top: 0,
+                  top: 20,
                   right: 20,
                   bottom: 50,
                   left: 20,
@@ -276,17 +276,17 @@ function BillingManagement(props) {
                   fontFamily: "Inter",
                   fontWeight: "600",
                   margin: "0",
-                  color: colors.greenAccent[500],
+                  color: colors.blueAccent[500],
                 }}
               >
                 Total Payments Processed
               </Box>
               <Box
                 sx={{
-                  fontSize: "60px",
+                  fontSize: "42px",
                   fontWeight: "700",
                   textAlign: "center",
-                  marginTop: "1.4em",
+                  marginTop: "2em",
                   color: colors.blueAccent[400],
                 }}
               >

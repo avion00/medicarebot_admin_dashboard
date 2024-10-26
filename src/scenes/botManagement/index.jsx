@@ -83,7 +83,7 @@ const Bot = () => {
           <section className="bot-overview">
             {bots.length > 0 ? (
               <table id="bot-table" textAlign="center" width="100%">
-                <thead style={{ backgroundColor: colors.blueAccent[600] }}>
+                <thead style={{ backgroundColor: colors.blueAccent[700] }}>
                   <tr>
                     <th style={{ width: "20%", padding: "1em 0.25em" }}>
                       Bot ID
@@ -219,7 +219,8 @@ const Bot = () => {
                   color: colors.grey[100],
                   fontSize: "14px",
                   fontWeight: "bold",
-                  padding: "10px 20px",
+                  padding: ".5em 1em",
+                  textTransform: 'capitalize',
                   margin: "1em 0",
                 }}
               >
@@ -274,7 +275,7 @@ const Bot = () => {
 
                     "& .MuiOutlinedInput-root": {
                       "& fieldset": {
-                        borderColor: colors.primary[400],
+                        borderColor: colors.grey[600],
                       },
                       "&:hover fieldset": {
                         borderColor: colors.greenAccent[700],
@@ -335,15 +336,16 @@ const Bot = () => {
                 id="save-training-btn"
                 onClick={saveTrainingMaterials}
                 sx={{
-                  backgroundColor: colors.greenAccent[700],
+                  backgroundColor: colors.blueAccent[700],
                   color: colors.grey[100],
                   fontSize: "14px",
                   fontWeight: "bold",
-                  padding: "10px 20px",
+                  padding: ".5em 1em",
                   margin: "1em 0",
+                  textTransform: 'capitalize'
                 }}
               >
-                <SaveAltIcon sx={{ mr: "10px" }} />
+                <SaveAltIcon sx={{ mr: ".5em" }} />
                 Save Training Materials
               </Button>
             </Box>

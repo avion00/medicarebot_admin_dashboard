@@ -1,9 +1,52 @@
-{
-  "name": "ove champ",
-  "username": "om-champ",
-  "email": "champ.tech@gmail.com",
-  "address": "japan",
-  "dob": "2005-03-11",
-  "contact": "+81 9805323432",
-  "profileImage": ""
-}
+[
+  {
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "address": "123 Main St, Anytown, USA",
+    "contact": "123-456-7890",
+    "dob": "1990-01-01",
+    "profileImage": "../assets/user.png",
+    "isSuspended": false
+  },
+  {
+    "name": "Jane Smith",
+    "username": "janesmith",
+    "email": "janesmith@example.com",
+    "address": "456 Oak St, Anytown, USA",
+    "contact": "987-654-3210",
+    "dob": "1992-02-02",
+    "profileImage": "../assets/user1.png",
+    "isSuspended": false
+  },
+  {
+    "name": "Alice Johnson",
+    "username": "alicejohnson",
+    "email": "alicejohnson@example.com",
+    "address": "789 Pine St, Anytown, USA",
+    "contact": "555-555-5555",
+    "dob": "1985-03-03",
+    "profileImage": "../assets/user2.png",
+    "isSuspended": false
+  },
+  {
+    "name": "Bob Brown",
+    "username": "bobbrown",
+    "email": "bobbrown@example.com",
+    "address": "321 Maple St, Anytown, USA",
+    "contact": "444-444-4444",
+    "dob": "1988-04-04",
+    "profileImage": "../assets/user3.png",
+    "isSuspended": true
+  },
+  {
+    "name": "Charlie Davis",
+    "username": "charliedavis",
+    "email": "charliedavis@example.com",
+    "address": "654 Cedar St, Anytown, USA",
+    "contact": "222-222-2222",
+    "dob": "1995-05-05",
+    "profileImage": "../assets/user4.png",
+    "isSuspended": false
+  }
+]
