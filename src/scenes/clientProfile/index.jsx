@@ -1,4 +1,3 @@
-// src/pages/ClientProfile.jsx
 import { Box, Button, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import React, { useState, useEffect } from "react";

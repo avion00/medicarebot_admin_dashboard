@@ -240,7 +240,7 @@ const Support = () => {
                 backgroundColor: colors.primary[400],
                 border: "1px solid rgb(150, 150, 150, .2)",
                 color: colors.primary[100],
-                fontFamily: "Inter"
+                fontFamily: "Inter",
               }}
               onFocus={(e) => {
                 e.target.style.outline = `1px solid ${colors.greenAccent[600]}`;
@@ -250,19 +250,16 @@ const Support = () => {
                 e.target.style.outline = "none";
               }}
             />
-            <Box>
+            <Box mt="1em">
               <Button
                 type="submit"
                 id="send-message"
                 onClick={handleSendMessage}
-                sx={{
-                  backgroundColor: colors.greenAccent[700],
-                  color: colors.grey[100],
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  padding: "8px 1.5em",
-                  marginTop: '1em',
-                  textTransform: 'capitalize'
+                color="secondary"
+                variant="outlined"
+                style={{
+                  borderRadius: "20px",
+                  marginRight: "8px",
                 }}
               >
                 <PublishIcon sx={{ mr: "8px" }} />

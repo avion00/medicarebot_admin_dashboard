@@ -3,7 +3,7 @@ import { ResponsiveBar } from "@nivo/bar";
 import { ResponsiveLine } from "@nivo/line";
 import { ResponsivePie } from "@nivo/pie";
 import jsonData from "../../data/reportsData.json";
-import { Box, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 
@@ -101,7 +101,7 @@ function Reports() {
                 border: "1px solid rgb(125, 125, 125, .5)",
                 backgroundColor: colors.blueAccent[900],
                 color: "inherit",
-                cursor: 'pointer'
+                cursor: "pointer",
               }}
               onFocus={(e) => {
                 e.target.style.outline = `1px solid ${colors.blueAccent[600]}`;
@@ -134,7 +134,7 @@ function Reports() {
                 border: "1px solid rgb(125, 125, 125, .5)",
                 backgroundColor: colors.blueAccent[900],
                 color: "inherit",
-                cursor: 'pointer'
+                cursor: "pointer",
               }}
               onFocus={(e) => {
                 e.target.style.outline = `1px solid ${colors.blueAccent[600]}`;
@@ -149,7 +149,14 @@ function Reports() {
 
         <div className="report-section">
           <Box mt="2em">
-            <Header title="Performance Report" />
+            <Typography
+              variant="h3"
+              fontWeight="700"
+              color={colors.grey[100]}
+              mb=".75em"
+            >
+              Performance Report
+            </Typography>
           </Box>
           <Box
             className="graph"
@@ -222,8 +229,15 @@ function Reports() {
         </div>
 
         <div className="activity-section">
-          <Box mt="2em">
-            <Header title="Client Activity" />
+          <Box mt="2.5em">
+            <Typography
+              variant="h3"
+              fontWeight="700"
+              color={colors.grey[100]}
+              mb=".75em"
+            >
+              Client Activity
+            </Typography>
           </Box>
           <div
             className="graph"
@@ -303,8 +317,15 @@ function Reports() {
         </div>
 
         <div className="analytics-section">
-          <Box mt="2em">
-            <Header title="Analytics Tools" />
+          <Box mt="2.5em">
+            <Typography
+              variant="h3"
+              fontWeight="700"
+              color={colors.grey[100]}
+              mb=".75em"
+            >
+              Analytics Tools
+            </Typography>
           </Box>
           <div
             className="analytics-cards"

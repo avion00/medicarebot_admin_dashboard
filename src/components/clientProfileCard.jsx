@@ -179,43 +179,49 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
         }}
       >
         <Button
-          sx={{
-            backgroundColor: colors.blueAccent[700],
-            color: colors.grey[100],
-            fontSize: "14px",
-            fontWeight: "bold",
-            padding: ".5em 1em",
-            textTransform: "capitalize",
-          }}
           onClick={() => onEdit(client.username)}
+          color="secondary"
+          variant="outlined"
+          style={{
+            borderRadius: "20px",
+            marginRight: "8px",
+          }}
         >
           <EditIcon sx={{ mr: "10px" }} />
           Edit
         </Button>
+
         <Button
-          sx={{
-            backgroundColor: colors.redAccent[700],
-            color: colors.grey[100],
-            fontSize: "14px",
-            fontWeight: "bold",
-            padding: ".5em 1em",
-            textTransform: "capitalize",
-          }}
           onClick={() => onDelete(client.username)}
+          variant="outlined"
+          sx={{
+            color: colors.redAccent[300],
+            borderColor: colors.redAccent[300],
+            borderRadius: "20px",
+            marginRight: "8px",
+            "&:hover": {
+              backgroundColor: colors.redAccent[700],
+              borderColor: colors.redAccent[700],
+            },
+          }}
         >
           <DeleteForeverIcon sx={{ mr: ".5em" }} />
           Delete
         </Button>
+
         <Button
-          sx={{
-            backgroundColor: colors.grey[700],
-            color: colors.grey[100],
-            fontSize: "14px",
-            fontWeight: "bold",
-            padding: ".5em 1em",
-            textTransform: "capitalize",
-          }}
           onClick={toggleSuspend}
+          variant="outlined"
+          sx={{
+            color: colors.blueAccent[300],
+            borderColor: colors.blueAccent[300],
+            borderRadius: "20px",
+            marginRight: "8px",
+            "&:hover": {
+              backgroundColor: colors.blueAccent[700],
+              borderColor: colors.blueAccent[700],
+            },
+          }}
         >
           <AcUnitIcon sx={{ mr: ".5em" }} />
           {isSuspended ? "Unsuspend" : "Suspend"}

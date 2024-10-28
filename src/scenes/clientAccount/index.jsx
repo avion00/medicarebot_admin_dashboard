@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Account from "../../data/userAccount.json";
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, Button, useTheme, IconButton, Typography } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import ViewStreamIcon from "@mui/icons-material/ViewStream";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+
 const AccountManagement = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -48,7 +49,6 @@ const AccountManagement = () => {
         key={user.id}
         className="userAccount"
         style={{
-          border: "1px solid rgb(125, 125, 125, 0.2)",
           padding: "1.5em",
           backgroundColor: colors.primary[400],
           width: "400px",
@@ -79,29 +79,36 @@ const AccountManagement = () => {
           }}
         >
           <Button
-            sx={{
-              backgroundColor: colors.blueAccent[700],
-              color: colors.grey[100],
-              fontSize: "12px",
-              fontWeight: "bold",
-              padding: "8px 14px",
-            }}
             onClick={() => handleSelectUser(user.id)}
+            variant="outlined"
+            sx={{
+              color: colors.blueAccent[300],
+              borderColor: colors.blueAccent[300],
+              borderRadius: "20px",
+              marginRight: "8px",
+              "&:hover": {
+                backgroundColor: colors.blueAccent[700],
+                borderColor: colors.blueAccent[700],
+              },
+            }}
           >
             <ViewStreamIcon sx={{ mr: "8px" }} />
             View Details
           </Button>
+
           <Button
-            sx={{
-              backgroundColor: user.frozen
-                ? colors.greenAccent[500]
-                : colors.redAccent[500],
-              color: colors.grey[100],
-              fontSize: "12px",
-              fontWeight: "bold",
-              padding: "8px 14px",
-            }}
             onClick={() => toggleFreeze(user.id)}
+            variant="outlined"
+            sx={{
+              color: colors.redAccent[300],
+              borderColor: colors.redAccent[300],
+              borderRadius: "20px",
+              marginRight: "8px",
+              "&:hover": {
+                backgroundColor: colors.redAccent[700],
+                borderColor: colors.redAccent[700],
+              },
+            }}
           >
             <AcUnitIcon sx={{ mr: "8px" }} />
             {user.frozen ? "Unfreeze Account" : "Freeze Account"}
@@ -118,10 +125,7 @@ const AccountManagement = () => {
         flexWrap="wrap"
         alignItems="center"
       >
-        <Header
-          title="CLIENT ACCOUNT"
-          subtitle="Manage your client accounts"
-        />
+        <Header title="CLIENT ACCOUNT" subtitle="Manage your client accounts" />
         <Box>
           <Button
             sx={{
@@ -151,59 +155,132 @@ const AccountManagement = () => {
         {renderUserList()}
       </div>
       {showDetail && selectedUser && (
-        <div
-          className="detail_dialoug_box"
-          style={{
+        <Box
+          open={showDetail && selectedUser}
+          onClose={closeDialog}
+          sx={{
             position: "absolute",
-            top: "7em",
-            right: "1em",
-            padding: "1em",
-            backgroundColor: colors.primary[400],
-            minWidth: "30%",
+            top: "6.9em",
+            right: "0",
+            width: "30%",
+            maxHeight: "84vh",
+            overflow: 'auto',
           }}
         >
-          <div
+          <Box
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              position: "relative",
             }}
           >
-            <h2 style={{margin: '0 !important '}}>User Details</h2>
-            <Box>
-              <Button
-                className="close-icon"
-                onClick={closeDialog}
+            <Typography
+              sx={{
+                fontWeight: "700",
+                padding: "1em",
+                borderBottom: `4px solid ${colors.primary[500]}`,
+                backgroundColor: colors.primary[400],
+                width: "100%",
+                color: colors.grey[100],
+              }}
+              variant="h4"
+              component="span"
+            >
+              User Details
+            </Typography>
+            <IconButton
+              onClick={closeDialog}
+              size="small"
+              sx={{
+                position: "absolute",
+                right: "1em",
+              }}
+            >
+              <CloseRoundedIcon />
+            </IconButton>
+          </Box>
+
+          <Box>
+            <Box style={{ lineHeight: "1.6" }}>
+              <Box
                 sx={{
-                  height: "44px !important",
-                  width: "44px !important",
-                  fontSize: '55px',
+                  fontWeight: "700",
+                  padding: "1em",
+                  borderBottom: `4px solid ${colors.primary[500]}`,
+                  backgroundColor: colors.primary[400],
+                  width: "100%",
                   color: colors.grey[100],
                 }}
               >
-                <HighlightOffRoundedIcon />
-              </Button>
+                <strong>Username:</strong> {selectedUser?.username}
+              </Box>
+              <Box
+                sx={{
+                  fontWeight: "700",
+                  padding: "1em",
+                  borderBottom: `4px solid ${colors.primary[500]}`,
+                  backgroundColor: colors.primary[400],
+                  width: "100%",
+                  color: colors.grey[100],
+                }}
+              >
+                <strong>Email:</strong> {selectedUser?.email}
+              </Box>
+              <Box
+                sx={{
+                  fontWeight: "700",
+                  padding: "1em",
+                  borderBottom: `4px solid ${colors.primary[500]}`,
+                  backgroundColor: colors.primary[400],
+                  width: "100%",
+                  color: colors.grey[100],
+                }}
+              >
+                <strong>Address:</strong> {selectedUser?.address}
+              </Box>
+              <Box
+                sx={{
+                  fontWeight: "700",
+                  padding: "1em",
+                  borderBottom: `4px solid ${colors.primary[500]}`,
+                  backgroundColor: colors.primary[400],
+                  width: "100%",
+                  color: colors.grey[100],
+                }}
+              >
+                <strong>Contact:</strong> {selectedUser?.contact}
+              </Box>
+              <Box
+                sx={{
+                  fontWeight: "700",
+                  padding: "1em",
+                  borderBottom: `4px solid ${colors.primary[500]}`,
+                  backgroundColor: colors.primary[400],
+                  width: "100%",
+                  color: colors.grey[100],
+                }}
+              >
+                <strong>Date of Birth:</strong> {selectedUser?.dob}
+              </Box>
+              <Box
+                sx={{
+                  fontWeight: "700",
+                  padding: "1em",
+                  borderBottom: `4px solid ${colors.primary[500]}`,
+                  backgroundColor: colors.primary[400],
+                  width: "100%",
+                  color: colors.grey[100],
+                }}
+              >
+                <strong>Status: </strong>
+                <span style={{ color: selectedUser?.frozen ? "red" : "green" }}>
+                  {selectedUser?.frozen ? "Frozen" : "Active"}
+                </span>
+              </Box>
             </Box>
-          </div>
-          <p>
-            <strong>Username:</strong> {selectedUser.username}
-          </p>
-          <p>
-            <strong>Email:</strong> {selectedUser.email}
-          </p>
-          <p>
-            <strong>Address:</strong> {selectedUser.address}
-          </p>
-          <p>
-            <strong>Contact:</strong> {selectedUser.contact}
-          </p>
-          <p>
-            <strong>Date of Birth:</strong> {selectedUser.dob}
-          </p>
-          <p>
-            <strong>Status:</strong> {selectedUser.frozen ? "Frozen" : "Active"}
-          </p>
-        </div>
+          </Box>
+        </Box>
       )}
     </Box>
   );

@@ -57,8 +57,8 @@ const Bot = () => {
         alignItems="center"
       >
         <Header
-          title="DASHBOARD"
-          subtitle="Welcome to your Medicare Bot Dashboard"
+          title="BOT MANAGEMENT"
+          subtitle="Welcome to your Medicare Bot Management"
         />
         {/* <Box>
           <Button
@@ -136,65 +136,59 @@ const Bot = () => {
                           justifyContent: "center",
                         }}
                       >
-                        <Box>
+                        <Box margin=".25em 0">
                           <Button
-                            className="action-btn stop-btn"
                             onClick={() => toggleBotStatus(index)}
+                            variant="outlined"
                             sx={{
-                              backgroundColor: colors.blueAccent[700],
-                              color: colors.grey[100],
-                              fontSize: "14px",
-                              fontWeight: "bold",
-                              textTransform: "capitalize",
-                              padding: ".35em 1em",
-                              margin: ".5em",
+                              color: colors.blueAccent[300],
+                              borderColor: colors.blueAccent[300],
+                              borderRadius: "20px",
+                              marginRight: "8px",
+                              "&:hover": {
+                                backgroundColor: colors.blueAccent[700],
+                                borderColor: colors.blueAccent[700],
+                              },
                             }}
                           >
                             {bot.status === "Running" ? (
                               <>
-                                <StopIcon sx={{ mr: "5px" }} />{" "}
-                                {/* Stop icon */}
-                                Stop
+                                <StopIcon sx={{ mr: "5px" }} /> Stop
                               </>
                             ) : (
                               <>
-                                <PlayArrowRoundedIcon sx={{ mr: "5px" }} />{" "}
-                                {/* Play icon */}
-                                Run
+                                <PlayArrowRoundedIcon sx={{ mr: "5px" }} /> Run
                               </>
                             )}
                           </Button>
                         </Box>
-                        <Box>
+                        <Box margin=".25em 0">
                           <Button
-                            className="action-btn delete-btn"
                             onClick={() => deleteBot(index)}
+                            variant="outlined"
                             sx={{
-                              backgroundColor: colors.redAccent[700],
-                              color: colors.grey[100],
-                              fontSize: "14px",
-                              fontWeight: "bold",
-                              textTransform: "capitalize",
-                              padding: ".35em 1em",
-                              margin: ".5em",
+                              color: colors.redAccent[300],
+                              borderColor: colors.redAccent[300],
+                              borderRadius: "20px",
+                              marginRight: "8px",
+                              "&:hover": {
+                                backgroundColor: colors.redAccent[700],
+                                borderColor: colors.redAccent[700],
+                              },
                             }}
                           >
                             <DeleteForeverRoundedIcon sx={{ mr: "5px" }} />
                             Delete
                           </Button>
                         </Box>
-                        <Box>
+                        <Box margin=".25em 0">
                           <Button
-                            className="action-btn edit-btn"
                             onClick={() => editBot(index)}
-                            sx={{
-                              backgroundColor: colors.greenAccent[700],
-                              color: colors.grey[100],
-                              fontSize: "14px",
-                              fontWeight: "bold",
-                              textTransform: "capitalize",
-                              padding: ".35em 1em",
-                              margin: ".5em",
+                            color="secondary"
+                            variant="outlined"
+                            style={{
+                              borderRadius: "20px",
+                              marginRight: "8px",
                             }}
                           >
                             <EditRoundedIcon sx={{ mr: "5px" }} />
@@ -209,19 +203,21 @@ const Bot = () => {
             ) : (
               <p>Loading bots...</p>
             )}
-            <Box>
+            <Box mt="1em" ml="1em">
               <Button
                 id="refresh-btn"
                 className="refresh_bots"
                 onClick={() => window.location.reload()}
+                variant="outlined"
                 sx={{
-                  backgroundColor: colors.blueAccent[700],
-                  color: colors.grey[100],
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  padding: ".5em 1em",
-                  textTransform: 'capitalize',
-                  margin: "1em 0",
+                  color: colors.blueAccent[300],
+                  borderColor: colors.blueAccent[300],
+                  borderRadius: "20px",
+                  marginRight: "8px",
+                  "&:hover": {
+                    backgroundColor: colors.blueAccent[700],
+                    borderColor: colors.blueAccent[700],
+                  },
                 }}
               >
                 <RefreshRoundedIcon sx={{ mr: "10px" }} />
@@ -330,19 +326,17 @@ const Bot = () => {
                 e.target.style.borderColor = colors.primary[400];
               }}
             />
-            <Box>
+            <Box mt="1em">
+
               <Button
                 className="save_training"
                 id="save-training-btn"
                 onClick={saveTrainingMaterials}
-                sx={{
-                  backgroundColor: colors.blueAccent[700],
-                  color: colors.grey[100],
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  padding: ".5em 1em",
-                  margin: "1em 0",
-                  textTransform: 'capitalize'
+                color="secondary"
+                variant="outlined"
+                style={{
+                  borderRadius: "20px",
+                  marginRight: "8px",
                 }}
               >
                 <SaveAltIcon sx={{ mr: ".5em" }} />

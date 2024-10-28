@@ -60,7 +60,7 @@ const DialogBox = ({
         style: {
           padding: ".5em",
           borderRadius: "12px",
-          backgroundColor: colors.primary[400]
+          backgroundColor: colors.primary[400],
         },
       }}
     >
@@ -167,11 +167,17 @@ const DialogBox = ({
         <Button
           type="submit"
           onClick={handleSubmit}
-          color="primary"
-          variant="contained"
+          variant="outlined"
           startIcon={<SaveIcon />}
-          style={{
+          sx={{
+            color: colors.blueAccent[200],
+            borderColor: colors.blueAccent[400],
             borderRadius: "20px",
+            marginRight: "8px",
+            "&:hover": {
+              backgroundColor: colors.blueAccent[600],
+              borderColor: colors.blueAccent[600],
+            },
           }}
         >
           {isEdit ? "Update" : "Add"} Client
