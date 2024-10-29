@@ -178,7 +178,11 @@ const Sidebar = () => {
               >
                 <Link
                   to="/clientProfile"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    fontSize: "14px",
+                  }}
                 >
                   Client Profile
                 </Link>
@@ -197,7 +201,11 @@ const Sidebar = () => {
               >
                 <Link
                   to="/assignBot"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    fontSize: "14px",
+                  }}
                 >
                   Assign Bot
                 </Link>
@@ -214,7 +222,11 @@ const Sidebar = () => {
               >
                 <Link
                   to="/account"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    fontSize: "14px",
+                  }}
                 >
                   Account
                 </Link>

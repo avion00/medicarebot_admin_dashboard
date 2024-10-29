@@ -100,7 +100,7 @@ function BillingManagement(props) {
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
-              textTransform: 'capitalize'
+              textTransform: "capitalize",
             }}
           >
             <DriveFileRenameOutlineIcon sx={{ mr: ".5em" }} />
@@ -168,36 +168,33 @@ function BillingManagement(props) {
                         justifyContent: "center",
                       }}
                     >
-                      <Box>
+                      <Box mt=".25em" mb=".25em">
                         <Button
-                          className="action-btn delete-btn"
                           onClick={() => openModal(index)}
-                          sx={{
-                            backgroundColor: colors.blueAccent[700],
-                            color: colors.grey[100],
-                            fontSize: "14px",
-                            fontWeight: "bold",
-                            textTransform: "capitalize",
-                            padding: ".35em 1em",
-                            margin: ".5em",
+                          color="secondary"
+                          variant="outlined"
+                          style={{
+                            borderRadius: "20px",
+                            marginRight: "8px",
                           }}
                         >
                           <EditRoundedIcon sx={{ mr: "5px" }} />
                           Edit
                         </Button>
                       </Box>
-                      <Box>
+                      <Box mt=".25em" mb=".25em">
                         <Button
-                          className="action-btn delete-btn"
                           onClick={() => deletePlan(index)}
+                          variant="outlined"
                           sx={{
-                            backgroundColor: colors.redAccent[700],
-                            color: colors.grey[100],
-                            fontSize: "14px",
-                            fontWeight: "bold",
-                            textTransform: "capitalize",
-                            padding: ".35em 1em",
-                            margin: ".5em",
+                            color: colors.redAccent[300],
+                            borderColor: colors.redAccent[300],
+                            borderRadius: "20px",
+                            marginRight: "8px",
+                            "&:hover": {
+                              backgroundColor: colors.redAccent[700],
+                              borderColor: colors.redAccent[700],
+                            },
                           }}
                         >
                           <DeleteForeverRoundedIcon sx={{ mr: "5px" }} />
@@ -346,7 +343,9 @@ function BillingManagement(props) {
                 }}
                 onClick={closeModal}
               >
-                <CloseIcon style={{ fontSize: "1.5em", color: colors.redAccent[100] }} />
+                <CloseIcon
+                  style={{ fontSize: "1.5em", color: colors.redAccent[100] }}
+                />
               </Box>
 
               {/* Modal Title */}
@@ -418,7 +417,7 @@ function BillingManagement(props) {
                   width: "100%",
                   fontSize: "1em",
                   borderRadius: "4px",
-                  background: colors.greenAccent[500]
+                  background: colors.greenAccent[500],
                 }}
               >
                 Save Plan
