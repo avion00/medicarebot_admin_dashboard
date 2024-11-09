@@ -9,6 +9,7 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import PaymentIcon from "@mui/icons-material/Payment";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import HelpCenterIcon from "@mui/icons-material/HelpCenter";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import PasswordIcon from "@mui/icons-material/Password";
@@ -41,6 +42,8 @@ const Sidebar = () => {
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+    const isNonMobile = useMediaQuery("(min-width:768px)");
+
 
   // Check if the URL path matches any menu item title
   const updateSelected = (title) => {
@@ -52,13 +55,17 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        position: "sticky",
+        position: isNonMobile ? "sticky" : "fixed",
         top: 0,
+        left: 0,
+        width: isCollapsed ? "80px" : "270px",
         height: "100vh",
+        zIndex: isNonMobile ? 1 : 1000,
         overflowY: "auto",
-        background: colors.primary[400],
+        transition: "width 0.3s ease",
+
         "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
+          backgroundColor: colors.primary[400],
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -70,6 +77,9 @@ const Sidebar = () => {
           color: "#868dfb !important",
         },
         "& .pro-menu-item.active": {
+          color: "#6870fa !important",
+        },
+        "& .pro-sub-menu-item.active": {
           color: "#6870fa !important",
         },
       }}
@@ -142,7 +152,10 @@ const Sidebar = () => {
             <Typography
               variant="h6"
               color={colors.grey[300]}
-              sx={{ m: "12px 0 5px 20px" }}
+              sx={{
+                margin: isCollapsed ? 0 : "12px 0 5px 20px",
+                textAlign: isCollapsed ? "center" : "left",
+              }}
             >
               Admin Dashboard
             </Typography>
@@ -161,6 +174,16 @@ const Sidebar = () => {
               )}
               style={{
                 color: colors.grey[100],
+                "& .pro-menu-item.active": {
+                  color: "#6870fa !important",
+                },
+                "& .pro-sub-menu-item.active": {
+                  color: "#6870fa !important",
+                },
+                "& .pro-inner-item:focus": {
+                  // color: 'red',
+                },
+                // .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus
               }}
             >
               <MenuItem
@@ -181,7 +204,7 @@ const Sidebar = () => {
                   style={{
                     textDecoration: "none",
                     color: "inherit",
-                    fontSize: "14px",
+                    fontSize: "13px",
                   }}
                 >
                   Client Profile
@@ -204,7 +227,7 @@ const Sidebar = () => {
                   style={{
                     textDecoration: "none",
                     color: "inherit",
-                    fontSize: "14px",
+                    fontSize: "13px",
                   }}
                 >
                   Assign Bot
@@ -225,7 +248,7 @@ const Sidebar = () => {
                   style={{
                     textDecoration: "none",
                     color: "inherit",
-                    fontSize: "14px",
+                    fontSize: "13px",
                   }}
                 >
                   Account

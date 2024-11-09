@@ -6,8 +6,9 @@ import {
   useTheme,
   IconButton,
   InputAdornment,
-  Divider,
+  // Divider,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -23,9 +24,9 @@ import { useNavigate } from "react-router-dom";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import GoogleIcon from "@mui/icons-material/Google";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import GitHubIcon from "@mui/icons-material/GitHub";
+// import GoogleIcon from "@mui/icons-material/Google";
+// import TwitterIcon from "@mui/icons-material/Twitter";
+// import GitHubIcon from "@mui/icons-material/GitHub";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -38,10 +39,10 @@ const Register = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isNonMobile = useMediaQuery("(min-width:768px)");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  // const [Usage, setUsage] = useState(""); 
+  // const [Usage, setUsage] = useState("");
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (event) => {
@@ -50,63 +51,62 @@ const Register = () => {
 
   const handleFormSubmit = (values) => {
     console.log(values);
-    navigate("/login"); 
+    navigate("/login");
   };
 
-  const buttonStyles = {
-    flexGrow: 1,
-    padding: ".75em 1em",
-    borderColor: colors.grey[900],
-    color: colors.blueAccent[100],
-    borderRadius: "3px",
-  };
-
-  // const handleUsageChange = (event) => {
-  //   setUsage(event.target.value);
+  // const buttonStyles = {
+  //   flexGrow: 1,
+  //   padding: ".75em 1em",
+  //   borderColor: colors.grey[900],
+  //   color: colors.blueAccent[100],
+  //   borderRadius: "3px",
   // };
 
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  username: "",
-  email: "",
-  phoneNumber: "",
-  companyName: "",
-  city: "",
-  state: "",
-  country: "",
-  botUsage: "", // Change this to match the form field name
-  password: "",
-  confirmPassword: "",
-};
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    phoneNumber: "",
+    companyName: "",
+    city: "",
+    state: "",
+    country: "",
+    botUsage: "", // Change this to match the form field name
+    password: "",
+    confirmPassword: "",
+  };
 
-const checkoutSchema = yup.object().shape({
-  firstName: yup.string().required("First Name is required"),
-  lastName: yup.string().required("Last Name is required"),
-  username: yup.string().required("Username is required"),
-  email: yup.string().email("Invalid email").required("Email is required"),
-  phoneNumber: yup.string().required("Phone number is required"),
-  companyName: yup.string().required("Company name is required"),
-  city: yup.string().required("City is required"),
-  state: yup.string().required("State is required"),
-  country: yup.string().required("Country is required"),
-  botUsage: yup.string().required("Bot usage is required"), // Make sure to validate botUsage
-  password: yup
-    .string()
-    .required("Password is required")
-    .min(6, "Password must be at least 6 characters"),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
-    .required("Confirm Password is required"),
-});
+  const checkoutSchema = yup.object().shape({
+    firstName: yup.string().required("First Name is required"),
+    lastName: yup.string().required("Last Name is required"),
+    username: yup.string().required("Username is required"),
+    email: yup.string().email("Invalid email").required("Email is required"),
+    phoneNumber: yup.string().required("Phone number is required"),
+    companyName: yup.string().required("Company name is required"),
+    city: yup.string().required("City is required"),
+    state: yup.string().required("State is required"),
+    country: yup.string().required("Country is required"),
+    botUsage: yup.string().required("Bot usage is required"), // Make sure to validate botUsage
+    password: yup
+      .string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters"),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match")
+      .required("Confirm Password is required"),
+  });
 
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: "space-between",
+        alignItems: isNonMobile ? "inherit" : "center",
+        flexDirection: isNonMobile ? "row" : "column",
         position: "relative",
+        marginTop: isNonMobile ? "0" : "3em",
       }}
     >
       <Box
@@ -127,14 +127,15 @@ const checkoutSchema = yup.object().shape({
 
       <Box
         sx={{
-          width: "300px",
-          height: "100dvh",
-          position: "sticky",
+          width: "80%",
+          position: isNonMobile ? "sticky" : "relative",
+          height: isNonMobile ? "100dvh" : "100%",
           top: "0",
           left: "0",
           flexGrow: "1",
           display: "flex",
           alignItems: "center",
+          textAlign: isNonMobile ? "inherit" : "center",
           justifyContent: "center",
         }}
       >
@@ -147,8 +148,8 @@ const checkoutSchema = yup.object().shape({
       <Box
         m="20px"
         sx={{
-          marginTop: "10.4em",
-          width: "300px",
+          marginTop: isNonMobile ? "10.4em" : "1em",
+          width: "80%",
           flexGrow: "1",
           display: "flex",
           alignItems: "center",
@@ -173,18 +174,18 @@ const checkoutSchema = yup.object().shape({
                 cursor: "pointer",
               }}
             >
-              <a
+              <Link
                 style={{
                   all: "unset",
                   display: "flex",
                   alignItems: "center",
                   gap: ".5em",
                 }}
-                href="/login"
+                to="/login"
               >
                 <ArrowForwardIcon />
                 Already have Account?
-              </a>
+              </Link>
             </Box>
           </Box>
 
@@ -618,7 +619,7 @@ const checkoutSchema = yup.object().shape({
                 </Box>
 
                 {/* Horizontal line and centered text */}
-                <Box
+                {/* <Box
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -634,7 +635,6 @@ const checkoutSchema = yup.object().shape({
                   <Divider sx={{ flexGrow: 1 }} />
                 </Box>
 
-                {/* Social Media Buttons */}
                 <Box
                   display="flex"
                   justifyContent="space-between"
@@ -692,7 +692,7 @@ const checkoutSchema = yup.object().shape({
                   >
                     GitHub
                   </Button>
-                </Box>
+                </Box> */}
               </form>
             )}
           </Formik>
