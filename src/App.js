@@ -12,6 +12,7 @@ import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
 import Geography from "./scenes/geography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
@@ -22,14 +23,20 @@ import BotManagement from "./scenes/botManagement/index";
 import Billing from "./scenes/billing/index";
 import Support from "./scenes/support/index";
 import Reports from "./scenes/reports/index";
-import LogIn from "./scenes/logIn/index";
-import Register from "./scenes/register/index";
-import ChangePassword from "./scenes/changePassword/index";
+import LogIn from "./scenes/auth/logIn/index";
+import Register from "./scenes/auth/register/index";
+import ChangePassword from "./scenes/auth/changePassword/index";
+import ForgetPassword from "./scenes/auth/forgetPassword/index";
+import OTP from "./scenes/auth/otp/index";
+import NewPassword from "./scenes/auth/newPassword/index";
+
 import EditProfile from "./scenes/editProfile/index";
 
 function App() {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
+      const isNonMobile = useMediaQuery("(min-width:768px)");
+
 
   const location = useLocation(); // Get the current location
 
@@ -37,7 +44,10 @@ function App() {
   const isAuthPage =
     location.pathname === "/" ||
     location.pathname === "/register" ||
-    location.pathname === "/logIn";
+    location.pathname === "/forgetPassword" ||
+    location.pathname === "/logIn" ||
+    location.pathname === "/otp" ||
+    location.pathname === "/newPassword";
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -49,6 +59,9 @@ function App() {
               <Route path="/" element={<LogIn />} />
               <Route path="/register" element={<Register />} />
               <Route path="/logIn" element={<LogIn />} />
+              <Route path="/forgetPassword" element={<ForgetPassword />} />
+              <Route path="/otp" element={<OTP />} />
+              <Route path="/newPassword" element={<NewPassword />} />
               <Route path="*" element={<Navigate to="/logIn" />} />
             </Routes>
           </div>
@@ -59,8 +72,10 @@ function App() {
               className="content"
               style={{
                 flex: 1,
-                overflowY: "auto", // Allow main content to scroll independently
+                overflowY: "auto",
                 padding: "20px",
+                marginLeft: isNonMobile ? "0" : "80px",
+
                 position: "relative",
               }}
             >
