@@ -29,6 +29,7 @@ import ChangePassword from "./scenes/auth/changePassword/index";
 import ForgetPassword from "./scenes/auth/forgetPassword/index";
 import OTP from "./scenes/auth/otp/index";
 import NewPassword from "./scenes/auth/newPassword/index";
+import Test from "./scenes/test/index";
 
 import EditProfile from "./scenes/editProfile/index";
 
@@ -102,6 +103,7 @@ function App() {
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/changePassword" element={<ChangePassword />} />
                 <Route path="/editProfile" element={<EditProfile />} />
+                <Route path="/test" element={<Test />} />
               </Routes>
             </main>
           </div>
