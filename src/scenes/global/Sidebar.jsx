@@ -42,8 +42,7 @@ const Sidebar = () => {
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
-    const isNonMobile = useMediaQuery("(min-width:768px)");
-
+  const isNonMobile = useMediaQuery("(min-width:768px)");
 
   // Check if the URL path matches any menu item title
   const updateSelected = (title) => {
@@ -63,7 +62,6 @@ const Sidebar = () => {
         zIndex: isNonMobile ? 1 : 1000,
         overflowY: "auto",
         transition: "width 0.3s ease",
-
         "& .pro-sidebar-inner": {
           backgroundColor: colors.primary[400],
         },
@@ -91,7 +89,7 @@ const Sidebar = () => {
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
-              margin: "10px 0 20px 0",
+              margin: "20px 0 20px 0",
               color: colors.grey[100],
             }}
           >
