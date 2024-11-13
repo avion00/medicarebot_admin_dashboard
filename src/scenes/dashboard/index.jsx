@@ -3,17 +3,17 @@ import { tokens } from "../../theme";
 import { activeUser } from "../../data/activeUser";
 import { botDeployed } from "../../data/botDeployed";
 import { recentActivities } from "../../data/recentActivities";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../components/Header";
 import LineChart from "../../components/LineChart";
 import Table from "../../components/table";
-
 import ProgressCircle from "../../components/ProgressCircle";
 
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isNonMobile = useMediaQuery("(min-width:768px)");
 
   return (
     <Box m="20px">
@@ -35,6 +35,7 @@ const Dashboard = () => {
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
+              marginBottom: isNonMobile ? "inherit" : "2em",
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -52,7 +53,7 @@ const Dashboard = () => {
       >
         {/* ROW 2 */}
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? "span 4" : "span 12"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -119,7 +120,7 @@ const Dashboard = () => {
         </Box>
 
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? "span 4" : "span 12"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -166,7 +167,7 @@ const Dashboard = () => {
         </Box>
 
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? "span 4" : "span 12"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           overflow="auto"
@@ -228,7 +229,7 @@ const Dashboard = () => {
         </Box>
 
         <Box
-          gridColumn="span 8"
+          gridColumn={isNonMobile ? "span 8" : "span 12"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
         >
@@ -269,7 +270,7 @@ const Dashboard = () => {
         </Box>
 
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? "span 4" : "span 12"}
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
           p="30px"

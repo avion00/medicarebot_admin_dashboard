@@ -6,9 +6,11 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { tokens } from "../../theme";
 import ProfileCard from "../../components/clientProfileCard";
 import DialogBox from "../../components/clientDialogBox";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 
 const ClientProfile = () => {
+  const isNonMobile = useMediaQuery("(min-width:768px)");
   const [clients, setClients] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [formData, setFormData] = useState({
@@ -111,6 +113,7 @@ const ClientProfile = () => {
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
+              marginBottom: isNonMobile ? "inherit" : "2em"
             }}
             onClick={addNewUser}
           >

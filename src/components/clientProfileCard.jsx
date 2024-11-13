@@ -21,6 +21,7 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
       style={{
         paddingBottom: "1em",
         backgroundColor: colors.primary[400],
+        opacity: isSuspended ? ".4" : "1",
       }}
     >
       <Box
@@ -42,7 +43,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             objectFit: "cover",
             margin: "1em 2em",
             borderRadius: "50%",
-            opacity: isSuspended ? ".4" : "1",
             cursor: "pointer",
             border: "1px solid rgb(125, 125, 125, .3)",
           }}
@@ -59,7 +59,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
               textTransform: "capitalize",
               margin: "0",
               color: "inherit",
-              opacity: isSuspended ? ".4" : "1",
             }}
           >
             {client.name || "No Full Name"}
@@ -70,7 +69,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
               fontFamily: "Rubik, sans-serif",
               fontWeight: "400",
               margin: "0 0 0 .5em",
-              opacity: isSuspended ? ".4" : "1",
             }}
           >
             @ {client.username || "No username"}
@@ -92,7 +90,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             <span
               className="label"
               style={{
-                opacity: isSuspended ? ".4" : "1",
                 fontWeight: "800",
                 fontSize: "14px",
                 color: colors.blueAccent[300],
@@ -102,7 +99,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             </span>
             <span
               className="value"
-              style={{ opacity: isSuspended ? ".4" : "1" }}
             >
               {client.email || "No Email"}
             </span>
@@ -111,7 +107,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             <span
               className="label"
               style={{
-                opacity: isSuspended ? ".4" : "1",
                 fontWeight: "800",
                 fontSize: "14px",
                 color: colors.blueAccent[300],
@@ -130,7 +125,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             <span
               className="label"
               style={{
-                opacity: isSuspended ? ".4" : "1",
                 fontWeight: "800",
                 fontSize: "14px",
                 color: colors.blueAccent[300],
@@ -140,7 +134,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             </span>
             <span
               className="value"
-              style={{ opacity: isSuspended ? ".4" : "1" }}
             >
               {client.contact || "No Contact number"}
             </span>
@@ -149,7 +142,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             <span
               className="label"
               style={{
-                opacity: isSuspended ? ".4" : "1",
                 fontWeight: "800",
                 fontSize: "14px",
                 color: colors.blueAccent[300],
@@ -159,7 +151,6 @@ const ProfileCard = ({ client, onEdit, onDelete, onSuspend }) => {
             </span>
             <span
               className="value"
-              style={{ opacity: isSuspended ? ".4" : "1" }}
             >
               {client.dob || "No DOB"}
             </span>

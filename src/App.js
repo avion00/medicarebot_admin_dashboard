@@ -74,7 +74,7 @@ function App() {
               style={{
                 flex: 1,
                 overflowY: "auto",
-                padding: "20px",
+                padding: isNonMobile? "20px" : " 20px 0",
                 marginLeft: isNonMobile ? "0" : "80px",
 
                 position: "relative",

@@ -7,6 +7,7 @@ import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import ViewStreamIcon from "@mui/icons-material/ViewStream";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const AccountManagement = () => {
   const [users, setUsers] = useState([]);
@@ -14,6 +15,8 @@ const AccountManagement = () => {
   const [showDetail, setShowDetail] = useState(false);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isNonMobile = useMediaQuery("(min-width:768px)");
+
 
   useEffect(() => {
     setUsers(Account);
@@ -134,6 +137,7 @@ const AccountManagement = () => {
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
+              marginBottom: isNonMobile ? undefined : "2em",
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />

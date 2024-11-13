@@ -14,10 +14,13 @@ import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
 import RefreshRoundedIcon from "@mui/icons-material/RefreshRounded";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Bot = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isNonMobile = useMediaQuery("(min-width:768px)");
+
   const [bots, setBots] = useState([]);
   const [trainingMaterials, setTrainingMaterials] = useState("");
   const [selectedBots, setSelectedBots] = useState([]);
@@ -80,21 +83,21 @@ const Bot = () => {
           className="client_management"
           style={{ fontFamily: "Inter, sans-serif" }}
         >
-          <section className="bot-overview">
+          <Box className="bot-overview" sx={{overflow: 'auto'}}>
             {bots.length > 0 ? (
               <table id="bot-table" textAlign="center" width="100%">
                 <thead style={{ backgroundColor: colors.blueAccent[700] }}>
                   <tr>
-                    <th style={{ width: "20%", padding: "1em 0.25em" }}>
+                    <th style={{ width: "20%", padding: "1em 0.5em" }}>
                       Bot ID
                     </th>
-                    <th style={{ width: "20%", padding: "1em 0.25em" }}>
+                    <th style={{ width: "20%", padding: "1em 0.5em" }}>
                       Status
                     </th>
-                    <th style={{ width: "20%", padding: "1em 0.25em" }}>
+                    <th style={{ width: "20%", padding: "1em 0.5em" }}>
                       Success Rate
                     </th>
-                    <th style={{ width: "40%", padding: "1em 0.25em" }}>
+                    <th style={{ width: "40%", padding: "1em 0.5em" }}>
                       Actions
                     </th>
                   </tr>
@@ -104,7 +107,7 @@ const Bot = () => {
                     <tr key={bot.id}>
                       <td
                         style={{
-                          padding: "0.25em",
+                          padding: "0.25em 0.5em",
                           textAlign: "center",
                         }}
                       >
@@ -112,7 +115,7 @@ const Bot = () => {
                       </td>
                       <td
                         style={{
-                          padding: "0.25em",
+                          padding: "0.25em 0.5em",
                           textAlign: "center",
                         }}
                       >
@@ -120,7 +123,7 @@ const Bot = () => {
                       </td>
                       <td
                         style={{
-                          padding: "0.25em",
+                          padding: "0.25em 0.5em",
                           textAlign: "center",
                         }}
                       >
@@ -128,10 +131,10 @@ const Bot = () => {
                       </td>
                       <td
                         style={{
-                          padding: "0.25em",
+                          padding: "0.25em 0.5em",
                           alignContent: "center",
                           display: "flex",
-                          flexWrap: "wrap",
+                          flexWrap:isNonMobile? "wrap" : "nowrap",
                           gap: ".5em",
                           justifyContent: "center",
                         }}
@@ -224,7 +227,7 @@ const Bot = () => {
                 Refresh Bots
               </Button>
             </Box>
-          </section>
+          </Box>
 
           <section className="training-materials">
             <Box mt="2em">
@@ -266,7 +269,7 @@ const Bot = () => {
                     },
                   }}
                   sx={{
-                    width: "30%",
+                    width: isNonMobile ? "30%" : "100%",
                     border: "1px solid",
 
                     "& .MuiOutlinedInput-root": {

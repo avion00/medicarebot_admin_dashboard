@@ -9,6 +9,7 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import CloseIcon from "@mui/icons-material/Close";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const KPIData = [
   {
@@ -35,6 +36,8 @@ function BillingManagement(props) {
 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isNonMobile = useMediaQuery("(min-width:768px)");
+
 
   const openModal = (index = -1) => {
     if (index >= 0) {
@@ -89,7 +92,10 @@ function BillingManagement(props) {
         flexWrap="wrap"
         alignItems="center"
       >
-        <Header title="CLIENT ACCOUNT" subtitle="Manage your client accounts" />
+        <Header
+          title="Billing Management"
+          subtitle="Manage your Bills Account"
+        />
         <Box>
           <Button
             id="create-plan"
@@ -100,7 +106,7 @@ function BillingManagement(props) {
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
-              textTransform: "capitalize",
+              marginBottom: isNonMobile ? undefined : "2em",
             }}
           >
             <DriveFileRenameOutlineIcon sx={{ mr: ".5em" }} />
@@ -110,7 +116,10 @@ function BillingManagement(props) {
       </Box>
       <div className="main-content" style={{ fontFamily: "Inter, sans-serif" }}>
         <section id="subscription-plans" className="dashboard-section">
-          <div className="plan-management">
+          <Box
+            className="plan-management"
+            sx={{ overflow: isNonMobile ? undefined : "auto" }}
+          >
             <table
               className="plan-table"
               id="plan-table"
@@ -119,14 +128,12 @@ function BillingManagement(props) {
             >
               <thead style={{ backgroundColor: colors.blueAccent[700] }}>
                 <tr>
-                  <th style={{ width: "25%", padding: "1em 0.25em" }}>
+                  <th style={{ width: "25%", padding: "1em 0.5em" }}>
                     Plan Name
                   </th>
-                  <th style={{ width: "25%", padding: "1em 0.25em" }}>Price</th>
-                  <th style={{ width: "25%", padding: "1em 0.25em" }}>
-                    Status
-                  </th>
-                  <th style={{ width: "25%", padding: "1em 0.25em" }}>
+                  <th style={{ width: "25%", padding: "1em 0.5em" }}>Price</th>
+                  <th style={{ width: "25%", padding: "1em 0.5em" }}>Status</th>
+                  <th style={{ width: "25%", padding: "1em 0.5em" }}>
                     Actions
                   </th>
                 </tr>
@@ -136,7 +143,7 @@ function BillingManagement(props) {
                   <tr key={index}>
                     <td
                       style={{
-                        padding: "0.25em",
+                        padding: "0.25em .5em",
                         textAlign: "center",
                       }}
                     >
@@ -144,7 +151,7 @@ function BillingManagement(props) {
                     </td>
                     <td
                       style={{
-                        padding: "0.25em",
+                        padding: "0.25em .5em",
                         textAlign: "center",
                       }}
                     >
@@ -152,7 +159,7 @@ function BillingManagement(props) {
                     </td>
                     <td
                       style={{
-                        padding: "0.25em",
+                        padding: "0.25em .5em",
                         textAlign: "center",
                       }}
                     >
@@ -163,7 +170,7 @@ function BillingManagement(props) {
                         padding: "0.25em",
                         alignContent: "center",
                         display: "flex",
-                        flexWrap: "wrap",
+                        flexWrap: isNonMobile ? "wrap" : "nowrap",
                         gap: ".5em",
                         justifyContent: "center",
                       }}
@@ -206,7 +213,7 @@ function BillingManagement(props) {
                 ))}
               </tbody>
             </table>
-          </div>
+          </Box>
         </section>
 
         <section id="kpi" className="dashboard-section">
@@ -217,7 +224,9 @@ function BillingManagement(props) {
             sx={{
               display: "flex",
               flexWrap: "wrap",
-              alignItems: "center",
+              width: "100%",
+              gap: isNonMobile ? undefined : "2em",
+              // alignItems: "center",
               justifyContent: "space-between",
             }}
           >
@@ -225,6 +234,8 @@ function BillingManagement(props) {
               className="kpi-item"
               style={{
                 height: "300px",
+                minWidth: "250px",
+                width: "100%",
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "column",
@@ -257,11 +268,12 @@ function BillingManagement(props) {
                 arcLabelsSkipAngle={10}
               />
             </Box>
+
             <Box
               className="kpi-item"
               style={{
                 flexGrow: "1",
-                height: "300px",
+                width: "100%",
                 display: "flex",
                 flexDirection: "column",
                 maxWidth: "50%",
@@ -270,9 +282,7 @@ function BillingManagement(props) {
               <Box
                 style={{
                   fontSize: "1.15em",
-                  fontFamily: "Inter",
                   fontWeight: "600",
-                  margin: "0",
                   color: colors.blueAccent[500],
                 }}
               >
@@ -280,11 +290,12 @@ function BillingManagement(props) {
               </Box>
               <Box
                 sx={{
-                  fontSize: "42px",
+                  fontSize: "46px",
                   fontWeight: "700",
                   textAlign: "center",
-                  marginTop: "2em",
-                  color: colors.blueAccent[400],
+
+                  marginTop: isNonMobile ? "2em" : "1em",
+                  color: colors.greenAccent[400],
                 }}
               >
                 $12,300
@@ -320,7 +331,7 @@ function BillingManagement(props) {
               backgroundColor: colors.primary[400],
               padding: "1em",
               zIndex: 1000,
-              width: "400px",
+              width: isNonMobile ? "400px" : "300px",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
               borderRadius: "8px",
             }}
@@ -362,7 +373,7 @@ function BillingManagement(props) {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "15px",
+                  gap: "16px",
                 }}
               >
                 <input
@@ -374,8 +385,12 @@ function BillingManagement(props) {
                   style={{
                     padding: "10px",
                     fontSize: "1em",
-                    border: "1px solid #ccc",
+                    border: `1px solid ${colors.grey[500]}`,
+                    boxShadow: "none",
                     borderRadius: "4px",
+                    backgroundColor: colors.primary[400],
+                    color: colors.grey[100],
+                    font: "inherit",
                   }}
                 />
                 <input
@@ -387,7 +402,10 @@ function BillingManagement(props) {
                   style={{
                     padding: "10px",
                     fontSize: "1em",
-                    border: "1px solid #ccc",
+                    border: `1px solid ${colors.grey[500]}`,
+                    backgroundColor: colors.primary[400],
+                    color: colors.grey[100],
+                    font: "inherit",
                     borderRadius: "4px",
                   }}
                 />
@@ -397,7 +415,10 @@ function BillingManagement(props) {
                   style={{
                     padding: "10px",
                     fontSize: "1em",
-                    border: "1px solid #ccc",
+                    border: `1px solid ${colors.grey[500]}`,
+                    backgroundColor: colors.primary[400],
+                    color: colors.grey[100],
+                    font: "inherit",
                     borderRadius: "4px",
                   }}
                 >

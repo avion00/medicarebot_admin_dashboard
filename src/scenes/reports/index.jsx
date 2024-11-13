@@ -342,7 +342,7 @@ function Reports() {
               style={{
                 height: "300px",
                 width: "42%",
-                minWidth: "300px",
+                minWidth: "200px",
                 flexGrow: 1,
                 alignContent: "center",
                 textAlign: "center",
@@ -408,7 +408,8 @@ function Reports() {
               style={{
                 height: "300px",
                 width: "42%",
-                minWidth: "300px",
+                minWidth: "200px",
+
                 flexGrow: 1,
                 alignContent: "center",
                 textAlign: "center",

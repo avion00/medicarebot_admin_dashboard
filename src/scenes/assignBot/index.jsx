@@ -2,7 +2,7 @@ import { Box, Button, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { BotAssign } from "../../data/botAssign";
 import { ClientActivity } from "../../data/clientActivity";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
 import Header from "../../components/Header";
@@ -10,6 +10,7 @@ import Header from "../../components/Header";
 const AssignBot = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isNonMobile = useMediaQuery("(min-width:768px)");
 
   return (
     <Box m="20px">
@@ -32,6 +33,7 @@ const AssignBot = () => {
               fontSize: "14px",
               fontWeight: "bold",
               padding: "10px 20px",
+              marginBottom: isNonMobile ? undefined : "2em",
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -49,8 +51,8 @@ const AssignBot = () => {
       >
         {/* ROW 2 */}
         <Box
-          gridColumn="span 6"
-          gridRow="span 4"
+          gridColumn={isNonMobile ? "span 6" : "span 12"}
+          gridRow={isNonMobile ? "span 4" : "span 3"}
           backgroundColor={colors.primary[400]}
           overflow="auto"
         >
@@ -116,8 +118,8 @@ const AssignBot = () => {
         </Box>
 
         <Box
-          gridColumn="span 6"
-          gridRow="span 4"
+          gridColumn={isNonMobile ? "span 6" : "span 12"}
+          gridRow={isNonMobile ? "span 4" : "span 3"}
           backgroundColor={colors.primary[400]}
           overflow="auto"
         >
