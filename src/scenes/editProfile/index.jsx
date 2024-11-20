@@ -177,7 +177,7 @@ const EditProfile = () => {
                     inputProps={{
                       name: "phone",
                       required: true,
-                      autoFocus: true,
+                      autoFocus: false,
                     }}
                     containerStyle={{
                       width: `65%`,
