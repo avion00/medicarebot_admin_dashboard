@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+
 import {
   Box,
   Button,
@@ -6,12 +7,6 @@ import {
   useTheme,
   IconButton,
   InputAdornment,
-  Snackbar,
-  Alert,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  // Divider
 } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -25,22 +20,14 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
+
 // import GoogleIcon from "@mui/icons-material/Google";
 // import TwitterIcon from "@mui/icons-material/Twitter";
 // import GitHubIcon from "@mui/icons-material/GitHub";
-
-// Initial values for Formik
-const initialValues = {
-  username: "",
-  password: "",
-};
-
-// Validation schema using Yup
-const checkoutSchema = yup.object().shape({
-  username: yup.string().required("Username is required"),
-  password: yup.string().required("Password is required"),
-});
 
 const LogIn = () => {
   const theme = useTheme();
@@ -49,9 +36,6 @@ const LogIn = () => {
   const isNonMobile = useMediaQuery("(min-width:768px)");
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
-  const [notificationType, setNotificationType] = useState("success");
-  const [notificationMessage, setNotificationMessage] = useState("");
   const navigate = useNavigate(); // Initialize navigate hook
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -59,60 +43,10 @@ const LogIn = () => {
     event.preventDefault();
   };
 
-  const handleCloseNotification = (event, reason) => {
-    if (reason === "clickaway") return;
-    setShowNotification(false);
+  const handleFormSubmit = (values) => {
+    console.log(values);
+    navigate("/dashboard");
   };
-
- const handleFormSubmit = async (values, { setSubmitting }) => {
-   try {
-     const response = await fetch("https://app.medicarebot.live/login", {
-       method: "POST",
-       headers: {
-         "Content-Type": "application/json",
-         Accept: "application/json",
-       },
-       body: JSON.stringify({
-         username: values.username,
-         password: values.password,
-       }),
-     });
-
-     if (!response.ok) {
-       const errorData = await response.json();
-       throw new Error(errorData.message || "Invalid credentials");
-     }
-
-     const data = await response.json();
-
-     // Show success notification with the server message and token
-     setNotificationType("success");
-     setNotificationMessage(
-       `Login Successful: ${data.message}`
-     );
-
-     setShowNotification(true);
-
-     // Store token in cookies and local storage
-     document.cookie = `authToken=${data.token};path=/;secure`;
-     localStorage.setItem("authToken", data.token);
-
-     // Wait for 1 minute before navigating
-     setTimeout(() => {
-       navigate("/dashboard");
-     }, 1000); // 60 seconds
-   } catch (error) {
-     console.error("Error during login:", error.message);
-     setNotificationType("error");
-     setNotificationMessage(
-       error.message || "An error occurred. Please try again later."
-     );
-     setShowNotification(true);
-   } finally {
-     setSubmitting(false);
-   }
- };
-
 
   // const buttonStyles = {
   //   flexGrow: 1,
@@ -142,7 +76,6 @@ const LogIn = () => {
           )}
         </IconButton>
       </Box>
-
       <Box
         sx={{
           width: "90%",
@@ -164,7 +97,6 @@ const LogIn = () => {
           />
         </Box>
       </Box>
-
       <Box
         m="20px"
         sx={{
@@ -220,7 +152,6 @@ const LogIn = () => {
               handleBlur,
               handleChange,
               handleSubmit,
-              isSubmitting,
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box
@@ -237,13 +168,13 @@ const LogIn = () => {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label="Username"
+                    label="Email"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.username}
-                    name="username"
-                    error={!!touched.username && !!errors.username}
-                    helperText={touched.username && errors.username}
+                    value={values.email}
+                    name="email"
+                    error={!!touched.email && !!errors.email}
+                    helperText={touched.email && errors.email}
                     sx={{
                       gridColumn: "span 4",
                       "& .MuiFormLabel-root.Mui-focused": {
@@ -274,7 +205,9 @@ const LogIn = () => {
                       endAdornment: (
                         <InputAdornment
                           position="end"
-                          style={{ marginRight: "1em" }}
+                          style={{
+                            marginRight: "1em",
+                          }}
                         >
                           <IconButton
                             aria-label="toggle password visibility"
@@ -299,6 +232,7 @@ const LogIn = () => {
                       width: "100%",
                     }}
                   >
+                    {/* Remember Me Section */}
                     <Box>
                       <FormGroup>
                         <FormControlLabel
@@ -306,7 +240,7 @@ const LogIn = () => {
                           control={
                             <Checkbox
                               sx={{
-                                color: colors.blueAccent[100],
+                                color: colors.blueAccent[100], // Default color
                                 "&.Mui-checked": {
                                   color: colors.blueAccent[100],
                                 },
@@ -318,10 +252,13 @@ const LogIn = () => {
                               Remember
                             </span>
                           }
-                          sx={{ color: colors.blueAccent[200] }}
+                          sx={{
+                            color: colors.blueAccent[200], // Ensure label color is set for default
+                          }}
                         />
                       </FormGroup>
                     </Box>
+
                     <Box
                       sx={{
                         cursor: "pointer",
@@ -357,14 +294,13 @@ const LogIn = () => {
                     color="secondary"
                     variant="contained"
                     startIcon={<LoginIcon />}
-                    disabled={isSubmitting}
                     sx={{ gridColumn: "span 4", width: "100%", padding: "1em" }}
                   >
-                    {isSubmitting ? "Logging in..." : "Log In"}
+                    Continue
                   </Button>
                 </Box>
-                {/* Horizontal line and centered text */}
 
+                {/* Horizontal line and centered text */}
                 {/* <Box
                   sx={{
                     display: "flex",
@@ -379,9 +315,9 @@ const LogIn = () => {
                     or sign in with
                   </span>
                   <Divider sx={{ flexGrow: 1 }} />
-                </Box> */}
+                </Box>
 
-                {/* <Box
+                <Box
                   display="flex"
                   justifyContent="space-between"
                   mt="20px"
@@ -441,20 +377,18 @@ const LogIn = () => {
           </Formik>
         </Box>
       </Box>
-
-      {/* Notification Snackbar */}
-      <Snackbar
-        open={showNotification}
-        autoHideDuration={6000}
-        onClose={handleCloseNotification}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert onClose={handleCloseNotification} severity={notificationType}>
-          {notificationMessage}
-        </Alert>
-      </Snackbar>
     </Box>
   );
+};
+
+const checkoutSchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Required"),
+  password: yup.string().required("Required"),
+});
+
+const initialValues = {
+  email: "",
+  password: "",
 };
 
 export default LogIn;
