@@ -8,6 +8,7 @@ import {
   InputAdornment,
   Snackbar,
   Alert,
+  Typography,
   CircularProgress,
   // Divider,
 } from "@mui/material";
@@ -73,7 +74,7 @@ const Register = () => {
           state: values.state,
           country: values.country,
           medicare_bot_usage: values.botUsage,
-          package: values.package,
+          package: "basic",
           password: values.password,
         }
       );
@@ -122,7 +123,6 @@ const Register = () => {
     state: "",
     country: "",
     botUsage: "",
-    package: "",
     password: "",
     confirmPassword: "",
   };
@@ -138,7 +138,7 @@ const Register = () => {
     state: yup.string().required("State is required"),
     country: yup.string().required("Country is required"),
     botUsage: yup.string().required("Bot usage is required"),
-    package: yup.string().required("Package is required"),
+    // package: yup.string().required("Package is required"),
     password: yup
       .string()
       .required("Password is required")
@@ -157,7 +157,7 @@ const Register = () => {
         alignItems: isNonMobile ? "inherit" : "center",
         flexDirection: isNonMobile ? "row" : "column",
         position: "relative",
-        paddingTop: isNonMobile ? "0" : "7em",
+        paddingTop: isNonMobile ? "0" : "5.5em",
       }}
     >
       <Box
@@ -190,10 +190,41 @@ const Register = () => {
           justifyContent: "center",
         }}
       >
-        <Header
-          title="WELCOME TO MEDICARE BOT"
-          subtitle="Please Register to continue"
-        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: isNonMobile ? "undefined" : "center",
+            padding: isNonMobile ? "1.5em" : "0",
+          }}
+        >
+          <Typography
+            variant="h3"
+            sx={{
+              textAlign: "center",
+              width: "200px",
+              alignItems: "center",
+              justifyContent: "center",
+              // marginTop: isNonMobile ? "0" : "2em",
+              marginLeft: "-.5em",
+              marginBottom: ".5em",
+            }}
+          >
+            <img
+              style={{
+                objectFit: "cover",
+                width: "100%",
+                height: "100%",
+              }}
+              src="/Medicare-Logo.png"
+              alt="Medicare bot logo"
+            />
+          </Typography>
+          <Header
+            title="WELCOME TO MEDICARE BOT"
+            subtitle="Please Register to continue"
+          />
+        </Box>
       </Box>
 
       <Box
@@ -529,26 +560,7 @@ const Register = () => {
                     error={!!touched.botUsage && !!errors.botUsage}
                     helperText={touched.botUsage && errors.botUsage}
                     sx={{
-                      gridColumn: "span 2",
-                      "& .MuiFormLabel-root.Mui-focused": {
-                        color: colors.blueAccent[500],
-                        fontWeight: "bold",
-                      },
-                    }}
-                  />
-                  <TextField
-                    fullWidth
-                    variant="filled"
-                    type="text"
-                    label="Package"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.package}
-                    name="package"
-                    error={!!touched.package && !!errors.package}
-                    helperText={touched.package && errors.package}
-                    sx={{
-                      gridColumn: "span 2",
+                      gridColumn: "span 4",
                       "& .MuiFormLabel-root.Mui-focused": {
                         color: colors.blueAccent[500],
                         fontWeight: "bold",
@@ -684,7 +696,7 @@ const Register = () => {
                     </Box>
                   </Box>
                 </Box>
-                <Box display="flex" justifyContent="end" mt="20px">
+                <Box display="flex" justifyContent="start" mt="20px">
                   <Button
                     type="submit"
                     color="secondary"
@@ -700,11 +712,21 @@ const Register = () => {
                       )
                     }
                     disabled={loading}
-                    sx={{ mt: 3, width: "100%", py: 1.5 }}
+                    sx={{
+                      background: "linear-gradient(45deg, #062994, #0E72E1)",
+                      // color: colors.grey[100],
+                      color: "#fff",
+                      width: isNonMobile ? "50%" : "100%",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      padding: "10px 20px",
+                      transition: "all 0.5s ease",
+                      "&:hover": {
+                        opacity: ".7",
+                      },
+                    }}
                   >
-                    {loading
-                      ? `Registering...`
-                      : "Register"}
+                    {loading ? `Registering...` : "Register"}
                   </Button>
                 </Box>
 
