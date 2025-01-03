@@ -17,7 +17,10 @@ import PersonIcon from "@mui/icons-material/Person";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-
+import Diversity2Icon from "@mui/icons-material/Diversity2";
+import HandshakeIcon from "@mui/icons-material/Handshake";
+import DetailsIcon from "@mui/icons-material/Details";
+import PreviewIcon from "@mui/icons-material/Preview";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -136,10 +139,10 @@ const Sidebar = () => {
                 >
                   John Doe
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[300]}>
+                <Typography variant="h5" color={colors.blueAccent[400]}>
                   johndoe_232
                 </Typography>
-                <Typography variant="h6" color={colors.blueAccent[300]}>
+                <Typography variant="h6" color={colors.blueAccent[100]}>
                   online
                 </Typography>
               </Box>
@@ -147,7 +150,7 @@ const Sidebar = () => {
           )}
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-            <Typography
+            {/* <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{
@@ -156,16 +159,16 @@ const Sidebar = () => {
               }}
             >
               Admin Dashboard
-            </Typography>
+            </Typography> */}
             <Item
-              title="Dashboard Overview"
+              title="Dashboard"
               to="/dashboard"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <SubMenu
-              title="Client Management"
+              title="Manage Client"
               icon={<ManageAccountsIcon />}
               active={["Client Profile", "Assign Bot", "Account"].includes(
                 selected
@@ -253,41 +256,136 @@ const Sidebar = () => {
                 </Link>
               </MenuItem>
             </SubMenu>
+            <SubMenu
+              title="Manage Patners"
+              icon={<HandshakeIcon />}
+              active={["addPatners", "editPatners", "viewPatners"].includes(
+                selected
+              )}
+              style={{
+                color: colors.grey[100],
+                "& .pro-menu-item.active": {
+                  color: "#6870fa !important",
+                },
+                "& .pro-sub-menu-item.active": {
+                  color: "#6870fa !important",
+                },
+                "& .pro-inner-item:focus": {
+                  // color: 'red',
+                },
+                // .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus
+              }}
+            >
+              <MenuItem
+                icon={<Diversity2Icon />}
+                onClick={() => {
+                  setSelected("addPatners");
+                  updateSelected("addPatners");
+                }}
+                style={{
+                  color:
+                    selected === "addPatners" ? "#6870fa" : colors.grey[100],
+                }}
+              >
+                <Link
+                  to="/addPatners"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    fontSize: "13px",
+                  }}
+                >
+                  Add Patners
+                </Link>
+              </MenuItem>
+
+              <MenuItem
+                icon={<DetailsIcon />}
+                onClick={() => {
+                  setSelected("editPatners");
+                  updateSelected("editPatners");
+                }}
+                style={{
+                  color:
+                    selected === "editPatners" ? "#6870fa" : colors.grey[100],
+                }}
+              >
+                <Link
+                  to="/editPatners"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    fontSize: "13px",
+                  }}
+                >
+                  Edit Patners
+                </Link>
+              </MenuItem>
+              <MenuItem
+                icon={<PreviewIcon />}
+                onClick={() => {
+                  setSelected("viewPatners");
+                  updateSelected("viewPatners");
+                }}
+                style={{
+                  color:
+                    selected === "viewPatners" ? "#6870fa" : colors.grey[100],
+                }}
+              >
+                <Link
+                  to="/viewPatners"
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    fontSize: "13px",
+                  }}
+                >
+                  View Patners
+                </Link>
+              </MenuItem>
+            </SubMenu>
             <Item
-              title="Bot Management"
+              title="Overview Bots"
+              to="/overviewBots"
+              icon={<PrecisionManufacturingIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Manage Bot"
               to="/bot"
               icon={<PrecisionManufacturingIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Billing Management"
+              title="Billing"
               to="/billing"
               icon={<PaymentIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Support and Ticketing"
+              title="Support"
               to="/support"
               icon={<HelpCenterIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Reports and Analysis"
+              title="Reports"
               to="/reports"
               icon={<AssessmentIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <Typography
+            {/* <Typography
               variant="h6"
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
               Profile
-            </Typography>
+            </Typography> */}
             <Item
               title="Edit Profile"
               to="/editProfile"

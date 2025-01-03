@@ -27,11 +27,9 @@ import { ActiveBots } from "../../data/activeBots";
 import EditIcon from "@mui/icons-material/Edit";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
-// import RadarChart from "../../components/RadarChart";
-// import { ResponseTimeTrendsData } from "../../data/responseTimeTrendsData";
-import ResponseTimeTrends from "../../components/ResponseTimeTrends";
-import BotActivityBreakDown from "../../components/BotActivityBreakDown";
-import ServerUptime from "../../components/ServerUptime";
+import RadarChart from "../../components/RadarChart";
+import { ResponseTimeTrendsData } from "../../data/responseTimeTrendsData";
+
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -319,12 +317,8 @@ const Dashboard = () => {
               Response Time Trends
             </Typography>
           </Box>
-          <Box
-            sx={{
-              padding: "1em",
-            }}
-          >
-            <ResponseTimeTrends />
+          <Box>
+            <RadarChart data={ResponseTimeTrendsData} />
           </Box>
         </Box>
 
@@ -344,12 +338,10 @@ const Dashboard = () => {
             p="15px"
           >
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
-              Bot Activity Breakdown
+              Bot Activity Breackdown
             </Typography>
           </Box>
-          <Box>
-            <BotActivityBreakDown />
-          </Box>
+          <Box>hello chart</Box>
         </Box>
 
         <Box
@@ -371,11 +363,7 @@ const Dashboard = () => {
               Server Uptime & Response Time
             </Typography>
           </Box>
-          <Box sx={{
-            padding: '1em'
-          }}>
-            <ServerUptime />
-          </Box>
+          <Box>hello chart</Box>
         </Box>
 
         {/* ROW 3 */}

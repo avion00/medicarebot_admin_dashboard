@@ -30,8 +30,11 @@ import ForgetPassword from "./scenes/auth/forgetPassword/index";
 import OTP from "./scenes/auth/otp/index";
 import NewPassword from "./scenes/auth/newPassword/index";
 import Test from "./scenes/test/index";
-
 import EditProfile from "./scenes/editProfile/index";
+import AddPatners from "./scenes/addPatners/index";
+import EditPatners from "./scenes/editPatners/index";
+import ViewPatners from "./scenes/viewPatners/index";
+import OverviewBots from "./scenes/overviewBots/index";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -104,6 +107,10 @@ function App() {
                 <Route path="/changePassword" element={<ChangePassword />} />
                 <Route path="/editProfile" element={<EditProfile />} />
                 <Route path="/test" element={<Test />} />
+                <Route path="/addPatners" element={<AddPatners />} />
+                <Route path="/editPatners" element={<EditPatners />} />
+                <Route path="/viewPatners" element={<ViewPatners />} />
+                <Route path="/overviewBots" element={<OverviewBots />} />
               </Routes>
             </main>
           </div>
