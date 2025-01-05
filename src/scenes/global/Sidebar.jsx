@@ -21,6 +21,8 @@ import Diversity2Icon from "@mui/icons-material/Diversity2";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import DetailsIcon from "@mui/icons-material/Details";
 import PreviewIcon from "@mui/icons-material/Preview";
+// import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -167,7 +169,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <SubMenu
+            {/* <SubMenu
               title="Manage Client"
               icon={<ManageAccountsIcon />}
               active={["Client Profile", "Assign Bot", "Account"].includes(
@@ -255,7 +257,7 @@ const Sidebar = () => {
                   Account
                 </Link>
               </MenuItem>
-            </SubMenu>
+            </SubMenu> */}
             <SubMenu
               title="Manage Patners"
               icon={<HandshakeIcon />}
@@ -351,34 +353,42 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
+            {/* <Item
               title="Manage Bot"
               to="/bot"
               icon={<PrecisionManufacturingIcon />}
               selected={selected}
               setSelected={setSelected}
+            /> */}
+            <Item
+              title="Manage Users"
+              to="/manageUsers"
+              icon={<ManageAccountsIcon />}
+              selected={selected}
+              setSelected={setSelected}
             />
             <Item
-              title="Billing"
+              title="Reports and Analysis"
+              to="/reports"
+              icon={<AssessmentIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Billing Management"
               to="/billing"
               icon={<PaymentIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Support"
+              title="Support Ticketing"
               to="/support"
               icon={<HelpCenterIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            <Item
-              title="Reports"
-              to="/reports"
-              icon={<AssessmentIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+
             {/* <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -386,7 +396,7 @@ const Sidebar = () => {
             >
               Profile
             </Typography> */}
-            <Item
+            {/* <Item
               title="Edit Profile"
               to="/editProfile"
               icon={<PersonOutlinedIcon />}
@@ -399,7 +409,7 @@ const Sidebar = () => {
               icon={<PasswordIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
           </Box>
         </Menu>
       </ProSidebar>

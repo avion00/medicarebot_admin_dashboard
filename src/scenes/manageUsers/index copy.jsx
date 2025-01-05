@@ -1,50 +1,32 @@
+import React from "react";
+
 import {
   Box,
-  Button,
-  IconButton,
+  InputBase,
   Typography,
   useTheme,
-  InputBase,
+  IconButton,
 } from "@mui/material";
-import React, { useState } from "react";
-
 import { tokens } from "../../theme";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../components/Header";
-import StatBox from "../../components/StatBox";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { DataGrid } from "@mui/x-data-grid";
-import { PartnerData } from "../../data/patnerData";
-import EditIcon from "@mui/icons-material/Edit";
-import PersonAddDisabledIcon from "@mui/icons-material/PersonAddDisabled";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
-import { useNavigate } from "react-router-dom";
+import { ManageUserData } from "../../data/mangeUserData";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-const ViewPartners = () => {
+const ManageUsers = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const isNonMobile = useMediaQuery("(min-width:768px)");
-  const isMobile = useMediaQuery("(min-width:521px)");
-  const navigate = useNavigate();
 
-  const PatnerListColumn = [
-    { field: "id", headerName: "ID", flex: 0.5 },
+  const MangeUsersColumn = [
+    { field: "id", headerName: "ID", flex: 0.25 },
     {
-      field: "clientName",
-      headerName: "Client Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "contactPerson",
-      headerName: "Contact Person",
+      field: "name",
+      headerName: "Name",
       flex: 1,
     },
     {
@@ -52,11 +34,21 @@ const ViewPartners = () => {
       headerName: "Email",
       flex: 1,
     },
+    {
+      field: "role",
+      headerName: "Role",
+      flex: 0.75,
+    },
+    {
+      field: "lastLogin",
+      headerName: "Last Login",
+      flex: 1,
+    },
 
     {
       field: "status",
       headerName: "Status",
-      flex: 1,
+      flex: 0.5,
       renderCell: (params) => {
         const isActive =
           params.row.status === "active" || params.row.status === "Active";
@@ -80,90 +72,34 @@ const ViewPartners = () => {
     {
       field: "action",
       headerName: "Action",
-      flex: 1,
+      flex: 0.5,
       renderCell: (params) => (
         <Box display="flex" gap=".5em">
           <IconButton
-            onClick={() => handleView(params.row.id)}
-            aria-label="edit"
+            onClick={() => handleMenu(params.row.id)}
+            aria-label="menu"
             sx={{ color: colors.greenAccent[200] }}
           >
-            <VisibilityIcon sx={{ fontSize: "16px" }} />
-          </IconButton>
-          <IconButton
-            onClick={() => handleEdit(params.row.id)}
-            aria-label="edit"
-            sx={{ color: colors.greenAccent[200] }}
-          >
-            <EditIcon sx={{ fontSize: "16px" }} />
-          </IconButton>
-          <IconButton
-            onClick={() => handleDeleteActiveClient(params.row.id)}
-            aria-label="view"
-            sx={{ color: colors.redAccent[400] }}
-          >
-            <DeleteSweepIcon sx={{ fontSize: "16px" }} />
+            <MoreVertIcon sx={{ fontSize: "16px" }} />
           </IconButton>
         </Box>
       ),
     },
   ];
 
+
   const handleCheckboxChange = (ids) => {
     // submittion code
   };
 
-  const handleEdit = (id) => {
-    console.log("Edit clicked for ID:", id);
-  };
-
-  const handleView = (id) => {
+  const handleMenu = (id) => {
     console.log("View clicked for ID:", id);
-  };
-
-  const [deleteClient, setDeleteClient] = useState([]);
-
-  const handleDeleteActiveClient = (id) => {
-    const updatedBots = deleteClient.map((bot) =>
-      bot.id === id ? { ...bot, status: "Active" } : bot
-    );
-
-    // Remove the reactivated bot from the deactivatedBots list
-    const remainingBots = updatedBots.filter(
-      (bot) => bot.status === "Inactive"
-    );
-
-    setDeleteClient(remainingBots);
-
-    // Update the JSON file (if necessary)
-    localStorage.setItem("botsData", JSON.stringify(updatedBots));
   };
 
   return (
     <Box m="20px">
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        flexWrap="wrap"
-        alignItems="center"
-      >
-        <Header title="View Patners" subtitle="View Your list of Patners" />
-        <Box>
-          <Button
-            onClick={() => navigate("/addPatners")}
-            sx={{
-              background: "linear-gradient(45deg, #062994, #0E72E1)",
-              color: "#fff",
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-              marginBottom: isNonMobile ? "inherit" : "2em",
-            }}
-          >
-            <PersonAddIcon sx={{ mr: "10px" }} />
-            Add Patners
-          </Button>
-        </Box>
+      <Box display="flex" alignItems="center" flexWrap="wrap">
+        <Header title="OVERVIEW BOTS" subtitle="Observe your Bots" />
       </Box>
 
       {/* GRID & CHARTS */}
@@ -175,72 +111,12 @@ const ViewPartners = () => {
       >
         {/* ROW 1 */}
 
-        <Box
-          gridColumn={isNonMobile ? "span 4" : isMobile ? "span 8" : "span 12"}
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          borderRadius="8px"
-        >
-          <StatBox
-            title="50"
-            subtitle="Total Patners"
-            progress="0.3"
-            increase="+30%"
-            icon={
-              <PersonOutlineIcon
-                sx={{ color: colors.grey[200], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-        <Box
-          gridColumn={isNonMobile ? "span 4" : isMobile ? "span 6" : "span 12"}
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          borderRadius="8px"
-        >
-          <StatBox
-            title="30"
-            subtitle="Active Patners"
-            progress="0.25"
-            increase="+25%"
-            icon={
-              <SupervisorAccountIcon
-                sx={{ color: colors.grey[200], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-        <Box
-          gridColumn={isNonMobile ? "span 4" : isMobile ? "span 6" : "span 12"}
-          backgroundColor={colors.primary[400]}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          borderRadius="8px"
-        >
-          <StatBox
-            title="11"
-            subtitle="Inactive Patners"
-            progress="0.11"
-            increase="+11%"
-            icon={
-              <PersonAddDisabledIcon
-                sx={{ color: colors.grey[200], fontSize: "26px" }}
-              />
-            }
-          />
-        </Box>
-
         {/* ROW 2 */}
         <Box
           gridColumn="span 12"
           gridRow="span 2"
           backgroundColor={colors.primary[400]}
+          mt={2}
           pt=".5em"
         >
           <Box
@@ -251,7 +127,7 @@ const ViewPartners = () => {
             p="0 2em"
           >
             <Typography variant="h3" fontWeight="bold">
-              Patner List
+              Bots List
             </Typography>
             <Box
               sx={{
@@ -277,7 +153,7 @@ const ViewPartners = () => {
               >
                 <InputBase
                   sx={{ ml: 2, flex: 1, color: "#000" }}
-                  placeholder="Search Partner name or email"
+                  placeholder="Search"
                 />
                 <IconButton type="button" sx={{ p: 1 }}>
                   <SearchIcon sx={{ color: "#000" }} />
@@ -348,8 +224,8 @@ const ViewPartners = () => {
           >
             <DataGrid
               checkboxSelection
-              rows={PartnerData}
-              columns={PatnerListColumn}
+              rows={ManageUserData}
+              columns={MangeUsersColumn}
               getRowId={(row) => row.id}
               onSelectionModelChange={handleCheckboxChange}
               rowHeight={40}
@@ -362,4 +238,4 @@ const ViewPartners = () => {
   );
 };
 
-export default ViewPartners;
+export default ManageUsers;

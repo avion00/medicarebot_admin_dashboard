@@ -35,6 +35,7 @@ import AddPatners from "./scenes/addPatners/index";
 import EditPatners from "./scenes/editPatners/index";
 import ViewPatners from "./scenes/viewPatners/index";
 import OverviewBots from "./scenes/overviewBots/index";
+import ManageUsers from "./scenes/manageUsers/index";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -77,7 +78,7 @@ function App() {
               style={{
                 flex: 1,
                 overflowY: "auto",
-                padding: isNonMobile? "20px" : " 20px 0",
+                padding: isNonMobile ? "20px" : " 20px 0",
                 marginLeft: isNonMobile ? "0" : "80px",
 
                 position: "relative",
@@ -111,6 +112,7 @@ function App() {
                 <Route path="/editPatners" element={<EditPatners />} />
                 <Route path="/viewPatners" element={<ViewPatners />} />
                 <Route path="/overviewBots" element={<OverviewBots />} />
+                <Route path="/manageUsers" element={<ManageUsers />} />
               </Routes>
             </main>
           </div>
