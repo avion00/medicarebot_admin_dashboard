@@ -61,7 +61,7 @@ const Register = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://app.medicarebot.live/register",
+        "http://46.202.153.94:5000/register",
         {
           first_name: values.firstName,
           last_name: values.lastName,

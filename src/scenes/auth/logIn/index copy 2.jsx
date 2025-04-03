@@ -11,6 +11,7 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
+  // Divider
   Typography
 } from "@mui/material";
 import { Formik } from "formik";
@@ -26,11 +27,17 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+// import GoogleIcon from "@mui/icons-material/Google";
+// import TwitterIcon from "@mui/icons-material/Twitter";
+// import GitHubIcon from "@mui/icons-material/GitHub";
+
+// Initial values for Formik
 const initialValues = {
   username: "",
   password: "",
 };
 
+// Validation schema using Yup
 const checkoutSchema = yup.object().shape({
   username: yup.string().required("Username is required"),
   password: yup.string().required("Password is required"),
@@ -79,6 +86,7 @@ const LogIn = () => {
 
      const data = await response.json();
 
+     // Show success notification with the server message and token
      setNotificationType("success");
      setNotificationMessage(
        `Login Successful: ${data.message}`
@@ -106,6 +114,14 @@ const LogIn = () => {
    }
  };
 
+
+  // const buttonStyles = {
+  //   flexGrow: 1,
+  //   padding: ".75em 1em",
+  //   borderColor: colors.grey[900],
+  //   color: colors.blueAccent[100],
+  //   borderRadius: "3px",
+  // };
 
   return (
     <Box
@@ -391,12 +407,86 @@ const LogIn = () => {
                     {isSubmitting ? "Logging in..." : "Log In"}
                   </Button>
                 </Box>
-                </form>
+                {/* Horizontal line and centered text */}
+
+                {/* <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    margin: "20px 0",
+                  }}
+                >
+                  <Divider sx={{ flexGrow: 1 }} />
+                  <span
+                    style={{ margin: ".5em", color: colors.blueAccent[100] }}
+                  >
+                    or sign in with
+                  </span>
+                  <Divider sx={{ flexGrow: 1 }} />
+                </Box> */}
+
+                {/* <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  mt="20px"
+                  gap="1em"
+                >
+                  <Button
+                    variant="outlined"
+                    startIcon={<GoogleIcon />}
+                    sx={{
+                      ...buttonStyles,
+                      backgroundColor: colors.redAccent[700],
+                      "&:hover": {
+                        backgroundColor: colors.primary[400],
+                      },
+                    }}
+                    onClick={() => {
+                      // Handle Google sign-in logic here
+                    }}
+                  >
+                    Google
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    startIcon={<TwitterIcon />}
+                    sx={{
+                      ...buttonStyles,
+                      backgroundColor: colors.greenAccent[700],
+                      "&:hover": {
+                        backgroundColor: colors.primary[400],
+                      },
+                    }}
+                    onClick={() => {
+                      // Handle Twitter sign-in logic here
+                    }}
+                  >
+                    Twitter
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    startIcon={<GitHubIcon />}
+                    sx={{
+                      ...buttonStyles,
+                      backgroundColor: colors.grey[700],
+                      "&:hover": {
+                        backgroundColor: colors.primary[400],
+                      },
+                    }}
+                    onClick={() => {
+                      // Handle GitHub sign-in logic here
+                    }}
+                  >
+                    GitHub
+                  </Button>
+                </Box> */}
+              </form>
             )}
           </Formik>
         </Box>
       </Box>
 
+      {/* Notification Snackbar */}
       <Snackbar
         open={showNotification}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
